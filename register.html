@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register Complaint | Complaint Setu</title>
+<link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Register Your Complaint</h1>
+<p class="subtitle">Please fill the form below to submit your complaint</p>
+
+<form>
+
+<h3>Basic Information</h3>
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your email" required>
+
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter phone number" required>
+
+
+<h3>Complaint Information</h3>
+
+<label>Complaint Category</label>
+<select required>
+<option value="">Select Category</option>
+<option>Water Issue</option>
+<option>Electricity Problem</option>
+<option>Road Damage</option>
+<option>Sanitation</option>
+<option>Security</option>
+<option>Consumer Complaint</option>
+</select>
+
+
+<label>Complaint Details</label>
+<textarea placeholder="Describe your complaint" rows="5" required></textarea>
+
+
+<label>Upload Image</label>
+<input type="file">
+
+
+<label>Location</label>
+<input type="text" placeholder="Enter complaint location" required>
+
+
+<button type="submit">Submit Complaint</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
