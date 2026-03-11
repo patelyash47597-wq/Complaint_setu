@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Complaint Setu</title>
+<link rel="stylesheet" href="ind.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h2 class="logo">Complaint Setu</h2>
+  <ul>
+    <li id="li1">Home</li>
+    <li id="li1">Track Complaint</li>
+    <li><button id="li1" class="login" onclick="loginUser()">login</button></li>
+  </ul>
+</nav>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>One Platform. Every Complaint.<br>Quick Action.</h1>
+    <p>Report any issue, easily categorized & prioritized for fast resolution.</p>
+
+    <div class="hero-buttons">
+      <button class="primary" id="button" onclick="register()">Register Complaint</button>
+      <button class="secondary" id="button">Track Complaint</button>
+    </div>
+  </div>
+
+  <!-- CATEGORY SECTION -->
+  <div class="categories">
+    <h2>Select Complaint Category</h2>
+
+    <div class="category-grid">
+      <button class="card" id="div1" onclick="register()">Water Issues</button>
+      <button class="card" id="div1" onclick="register()">Electricity</button>
+      <button class="card" id="div1" onclick="register()">Roads</button>
+      <button class="card" id="div1" onclick="register()">Sanitation</button>
+      <button class="card" id="div1" onclick="register()">Security</button>
+      <button class="card" id="div1" onclick="register()">Consumer Issues</button>
+    </div>
+  </div>
+
+  <!-- REGISTER COMPLAINT
+  <div class="register">
+    <h2>Register a Complaint</h2>
+
+    <label>Category</label>
+    <select>
+      <option id="option1">Select Category</option>
+      <option id="option2">Water</option>
+      <option id="option3">Electricity</option>
+      <option>Roads</option>
+    </select>
+
+    <label>Complaint Details</label>
+    <textarea placeholder="Describe your issue"></textarea>
+
+    <label>Upload Photo</label>
+    <input type="file">
+
+    <label>Location</label>
+    <input type="text" placeholder="Enter your location">
+
+    <button class="submit" id="button">Submit Complaint</button>
+  </div> -->
+
+  <!-- TRACK COMPLAINT -->
+  <div class="track">
+    <h2>Track Your Complaint</h2>
+
+    <p><strong>Complaint ID:</strong> CS123456</p>
+    <p><strong>Category:</strong> Water Issue</p>
+    <p><strong>Location:</strong> ABC Nagar</p>
+    <p><strong>Status:</strong> In Progress</p>
+
+    <div class="status">
+      <div>✔ Complaint Registered</div>
+      <div>✔ In Progress</div>
+      <div>✔ Action Taken</div>
+      <div>⏳ Resolved</div>
+    </div>
+  </div>
+
+</div>
+<script>
+
+function loginUser(){
+window.location.href="login.html";
+}
+
+function register(){
+window.location.href="register.html";
+}
+</script>
+</body>
+</html>
