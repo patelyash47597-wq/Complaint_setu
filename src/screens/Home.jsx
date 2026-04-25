@@ -4,6 +4,7 @@ import {
     Gavel, ShieldCheck, FileText, Search, Shield,
     Ambulance, Heart, Baby, PhoneCall, ArrowRight
 } from 'lucide-react';
+import downloadImg from "./download.jpg"; // adjust path if needed
 
 const Home = ({ onNavigate = () => { } }) => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,7 +12,7 @@ const Home = ({ onNavigate = () => { } }) => {
     useEffect(() => {
         document.title = 'Complaint Setu - Quick & Efficient Redressal';
     }, []);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     return (
         <>
 
@@ -132,42 +133,69 @@ const Home = ({ onNavigate = () => { } }) => {
                                 <p className="text-slate-600 dark:text-slate-400">Immediate assistance is just a call away. Available 24/7 across all regions.</p>
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {/* Helpline Card 1 */}
-                                <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-primary/20 transition-all group">
+                                {/* Helpline Card 1 - Police */}
+                                <a
+                                    href="tel:100"
+                                    className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-red-300 hover:shadow-md transition-all group no-underline block"
+                                >
                                     <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
                                         <span className="material-icons">local_police</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1">Police</h3>
+                                    <h3 className="text-xl font-bold mb-1 text-slate-900">Police</h3>
                                     <p className="text-sm text-slate-500 mb-4">Emergency police assistance</p>
                                     <div className="text-2xl font-bold text-primary">100</div>
-                                </div>
-                                {/* Helpline Card 2 */}
-                                <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-primary/20 transition-all group">
+                                    <div className="mt-3 flex items-center gap-1 text-red-600 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span className="material-icons text-sm">call</span> Tap to Call
+                                    </div>
+                                </a>
+
+                                {/* Helpline Card 2 - Ambulance */}
+                                <a
+                                    href="tel:108"
+                                    className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-blue-300 hover:shadow-md transition-all group no-underline block"
+                                >
                                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                         <span className="material-icons">medical_services</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1">Ambulance</h3>
+                                    <h3 className="text-xl font-bold mb-1 text-slate-900">Ambulance</h3>
                                     <p className="text-sm text-slate-500 mb-4">Medical emergency services</p>
                                     <div className="text-2xl font-bold text-primary">108</div>
-                                </div>
-                                {/* Helpline Card 3 */}
-                                <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-primary/20 transition-all group">
+                                    <div className="mt-3 flex items-center gap-1 text-blue-600 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span className="material-icons text-sm">call</span> Tap to Call
+                                    </div>
+                                </a>
+
+                                {/* Helpline Card 3 - Women Helpline */}
+                                <a
+                                    href="tel:1091"
+                                    className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-pink-300 hover:shadow-md transition-all group no-underline block"
+                                >
                                     <div className="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 text-pink-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-pink-600 group-hover:text-white transition-colors">
                                         <span className="material-icons">woman</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1">Women Helpline</h3>
+                                    <h3 className="text-xl font-bold mb-1 text-slate-900">Women Helpline</h3>
                                     <p className="text-sm text-slate-500 mb-4">Safety and support services</p>
                                     <div className="text-2xl font-bold text-primary">1091</div>
-                                </div>
-                                {/* Helpline Card 4 */}
-                                <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-primary/20 transition-all group">
+                                    <div className="mt-3 flex items-center gap-1 text-pink-600 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span className="material-icons text-sm">call</span> Tap to Call
+                                    </div>
+                                </a>
+
+                                {/* Helpline Card 4 - Child Helpline */}
+                                <a
+                                    href="tel:1098"
+                                    className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-primary/5 hover:border-orange-300 hover:shadow-md transition-all group no-underline block"
+                                >
                                     <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-600 group-hover:text-white transition-colors">
                                         <span className="material-icons">child_care</span>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1">Child Helpline</h3>
+                                    <h3 className="text-xl font-bold mb-1 text-slate-900">Child Helpline</h3>
                                     <p className="text-sm text-slate-500 mb-4">Protection and child welfare</p>
                                     <div className="text-2xl font-bold text-primary">1098</div>
-                                </div>
+                                    <div className="mt-3 flex items-center gap-1 text-orange-600 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <span className="material-icons text-sm">call</span> Tap to Call
+                                    </div>
+                                </a>
                             </div>
                             <div className="mt-16 bg-slate-100 rounded-3xl p-8 lg:p-12 border border-slate-200 shadow-lg">
 
@@ -187,24 +215,28 @@ const Home = ({ onNavigate = () => { } }) => {
                                     </div>
 
                                     <div className="w-1/3">
-
-                                        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-
+                                        <a
+                                            href="tel:18001234567"
+                                            className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all group block no-underline"
+                                        >
                                             <div className="flex items-center gap-4 mb-4">
-                                                <span className="material-icons text-blue-700">support_agent</span>
-                                                <span className="font-semibold">24/7 Citizen Support</span>
+                                                <span className="material-icons text-blue-700 group-hover:scale-110 transition-transform">support_agent</span>
+                                                <span className="font-semibold text-slate-800">24/7 Citizen Support</span>
                                             </div>
 
                                             <div className="text-3xl font-bold text-blue-700 mb-2">
                                                 1800-123-4567
                                             </div>
 
-                                            <p className="text-xs text-slate-500 uppercase tracking-widest font-semibold">
+                                            <p className="text-xs text-slate-500 uppercase tracking-widest font-semibold mb-3">
                                                 Toll-Free Number
                                             </p>
 
-                                        </div>
-
+                                            <div className="flex items-center gap-2 bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg group-hover:bg-blue-800 transition-colors justify-center">
+                                                <span className="material-icons text-sm">call</span>
+                                                Call Now
+                                            </div>
+                                        </a>
                                     </div>
 
                                 </div>

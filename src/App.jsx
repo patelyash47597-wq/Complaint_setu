@@ -10,6 +10,7 @@ import TrackComplaint from "./screens/TrackComplaint";
 import AdminDashboard from "./screens/AdminDashboard";
 import Helpline from "./screens/Helpline";
 import Login from "./screens/login";
+import MyComplaints from "./screens/MyComplaints";
 
 
 
@@ -49,6 +50,11 @@ const App = () => {
             <Route path="/admin" element={
               <ProtectedRoute adminOnly={true}>
                 <AdminDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/my-complaints" element={
+              <ProtectedRoute>
+                <MyComplaints />
               </ProtectedRoute>
             } />
           </Routes>

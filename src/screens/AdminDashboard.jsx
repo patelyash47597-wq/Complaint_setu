@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import StatsPage from "./StatsPage";
+import DepartmentsPage from "./DepartmentsPage";
 
 // ── Inline styles & keyframes injected once ──────────────────────────────────
 const GLOBAL_CSS = `
@@ -21,7 +23,7 @@ const GLOBAL_CSS = `
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { + font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); }
+  body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -34,6 +36,10 @@ const GLOBAL_CSS = `
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50%       { opacity: .5; transform: scale(.75); }
+  }
+  @keyframes sla-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.6; }
   }
 
   .fade-up { animation: fadeUp .45s ease both; }
@@ -54,18 +60,13 @@ const GLOBAL_CSS = `
   .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
+    top: 0; left: 0; right: 0; height: 4px;
     background: linear-gradient(90deg, var(--sky) 0%, var(--sky-lt) 50%, var(--gold) 100%);
     border-radius: 16px 16px 0 0;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  .card:hover::before {
-    opacity: 0.6;
-  }
+  .card:hover::before { opacity: 0.6; }
 
   select, input[type="date"] {
     font-family: 'DM Sans', sans-serif;
@@ -87,7 +88,6 @@ const GLOBAL_CSS = `
 
   button { cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
-  /* status pills */
   .pill {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 11px; font-weight: 600; letter-spacing: .4px;
@@ -100,13 +100,11 @@ const GLOBAL_CSS = `
   .pill-rejected  { background: #ffe4e6; color: #9f1239; }
   .pill-default   { background: #f1f5f9; color: #475569; }
 
-  /* sidebar accent bar */
   .accent-bar {
     position: absolute; left: 0; top: 12px; bottom: 12px;
     width: 4px; border-radius: 0 4px 4px 0;
   }
 
-  /* modal backdrop */
   .modal-backdrop {
     position: fixed; inset: 0;
     background: rgba(10,22,40,.55);
@@ -116,25 +114,24 @@ const GLOBAL_CSS = `
     animation: fadeUp .2s ease;
   }
 
-
-    .main-container {
-        width: 100%;
-        max-width: none;
-        margin: 0 auto;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-  .bottom-nav {
-    max-width: 480px;
-  }
-  @media (min-width: 768px) {
-    .bottom-nav {
-      max-width: 1200px;
-    }
+  .main-container {
+    width: 100%; max-width: none; margin: 0 auto;
+    padding-left: 0; padding-right: 0;
   }
 
-  /* loading skeleton */
+  .bottom-nav { max-width: 480px; }
+  @media (min-width: 768px) { .bottom-nav { max-width: 1200px; } }
+
+  .sla-bar-track {
+    height: 4px; border-radius: 2px;
+    background: rgba(10,22,40,0.08);
+    overflow: hidden; margin: 6px 0 2px;
+  }
+  .sla-bar-fill {
+    height: 100%; border-radius: 2px;
+    transition: width 1s linear;
+  }
+  .sla-urgent { animation: sla-pulse 1.4s ease-in-out infinite; }
 `;
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -158,7 +155,102 @@ const accentColor = (status = "") => {
 
 const fmt = (iso) => new Date(iso).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
 
-// ── StatusModal (inline prompt replacement) ───────────────────────────────────
+const fmtTime = (seconds) => {
+    if (seconds <= 0) return "00:00:00";
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return [h, m, s].map(n => String(n).padStart(2, "0")).join(":");
+};
+
+// ── SLA Timer component (self-ticking) ───────────────────────────────────────
+const SLATimer = ({ complaint }) => {
+    const [tick, setTick] = useState(0);
+
+    useEffect(() => {
+        // Only tick if not resolved / rejected
+        if (complaint.status === "Resolved" || complaint.status === "Rejected") return;
+        const id = setInterval(() => setTick(t => t + 1), 1000);
+        return () => clearInterval(id);
+    }, [complaint.status]);
+
+    if (!complaint.slaDeadline) return null;
+
+    const isResolved = complaint.status === "Resolved" || complaint.status === "Rejected";
+    if (isResolved) {
+        return (
+            <div style={{
+                background: "#d1fae5", borderRadius: 8,
+                padding: "6px 10px", fontSize: 11, fontWeight: 600, color: "#065f46",
+                display: "flex", alignItems: "center", gap: 5
+            }}>
+                <span>✓</span> SLA met
+            </div>
+        );
+    }
+
+    const totalSecs   = (complaint.slaTotalHours || 72) * 3600;
+    const deadlineMs  = new Date(complaint.slaDeadline).getTime();
+    const remSecs     = Math.max(0, Math.floor((deadlineMs - Date.now()) / 1000));
+    const percentLeft = Math.min(100, Math.round((remSecs / totalSecs) * 100));
+    const breached    = remSecs === 0;
+    const urgent      = !breached && percentLeft < 20;
+
+    const barColor = breached ? "#ff4d6d"
+        : urgent ? "#f97316"
+        : complaint.priority === "High" ? "#ff4d6d"
+        : complaint.priority === "Medium" ? "#f0b429"
+        : "#00c48c";
+
+    const labelColor = breached ? "#9f1239"
+        : urgent ? "#9a3412"
+        : "var(--muted)";
+
+    const bgColor = breached ? "#fff0f3"
+        : urgent ? "#fff7ed"
+        : "var(--surface)";
+
+    return (
+        <div style={{
+            background: bgColor,
+            border: `1px solid ${breached ? "#fecdd3" : urgent ? "#fed7aa" : "rgba(226,232,244,0.5)"}`,
+            borderRadius: 10,
+            padding: "8px 12px",
+            gridColumn: "1 / -1"   // spans both columns in the info grid
+        }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontSize: 10, fontWeight: 600, color: labelColor, letterSpacing: "0.5px", textTransform: "uppercase" }}>
+                    {breached ? "⚠ SLA Breached" : urgent ? "⚡ SLA Urgent" : "⏱ SLA Countdown"}
+                </span>
+                <span
+                    className={urgent && !breached ? "sla-urgent" : ""}
+                    style={{
+                        fontFamily: "'DM Sans', monospace",
+                        fontVariantNumeric: "tabular-nums",
+                        fontSize: 15,
+                        fontWeight: 600,
+                        color: breached ? "#ff4d6d" : urgent ? "#f97316" : "var(--navy)",
+                        letterSpacing: "0.05em"
+                    }}
+                >
+                    {breached ? "Breached" : fmtTime(remSecs)}
+                </span>
+            </div>
+            <div className="sla-bar-track">
+                <div
+                    className="sla-bar-fill"
+                    style={{ width: `${percentLeft}%`, background: barColor }}
+                />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: labelColor }}>
+                <span>Due: {new Date(complaint.slaDeadline).toLocaleString("en-IN", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                <span>{percentLeft}% left</span>
+            </div>
+        </div>
+    );
+};
+
+// ── StatusModal ───────────────────────────────────────────────────────────────
 const StatusModal = ({ complaint, onClose, onSave }) => {
     const [val, setVal] = useState(complaint.status || "Pending");
     const options = ["Pending", "In Progress", "Resolved", "Rejected"];
@@ -221,7 +313,6 @@ const DetailModal = ({ item, onClose }) => (
                 boxShadow: "0 20px 60px rgba(10,22,40,.25)", overflow: "hidden"
             }}
         >
-            {/* colored top stripe */}
             <div style={{ height: 6, background: accentColor(item.status) }} />
             <div style={{ padding: 24 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 18 }}>
@@ -246,6 +337,13 @@ const DetailModal = ({ item, onClose }) => (
                             <p style={{ color: "var(--text)", lineHeight: 1.5 }}>{val}</p>
                         </div>
                     ))}
+                    {/* SLA info in detail modal */}
+                    {item.slaDeadline && (
+                        <div style={{ background: "var(--surface)", borderRadius: 12, padding: "10px 14px" }}>
+                            <p style={{ fontSize: 11, color: "var(--muted)", fontWeight: 500, marginBottom: 6 }}>⏱ SLA DEADLINE</p>
+                            <SLATimer complaint={item} />
+                        </div>
+                    )}
                 </div>
 
                 {item.image && (
@@ -274,8 +372,13 @@ const StatChip = ({ label, count, color }) => (
         background: "#fff", border: "1px solid var(--border)", borderRadius: 14,
         padding: "12px 16px", minWidth: 0, flex: "1 1 0"
     }}>
-        <p style={{ fontSize: 22, fontWeight: 800, fontFamily: "Syne,sans-serif", color }}>{count}</p>
-        <p style={{ fontSize: 11, color: "var(--muted)", marginTop: 2, whiteSpace: "nowrap" }}>{label}</p>
+        <p style={{
+            fontSize: 24, fontWeight: 600,
+            fontFamily: "'DM Sans', sans-serif",
+            fontVariantNumeric: "tabular-nums",
+            letterSpacing: "-0.5px", lineHeight: 1, color
+        }}>{count}</p>
+        <p style={{ fontSize: 11, color: "var(--muted)", marginTop: 4, whiteSpace: "nowrap" }}>{label}</p>
     </div>
 );
 
@@ -298,14 +401,22 @@ const AdminDashboard = () => {
         (statusFilter === "" || c.status === statusFilter)
     );
 
-    const totalPages = Math.max(1, Math.ceil(filteredComplaints.length / itemsPerPage));
+    const totalPages   = Math.max(1, Math.ceil(filteredComplaints.length / itemsPerPage));
     const currentItems = filteredComplaints.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
+    // SLA breach count for admin awareness
+    const slaBreached = complaints.filter(c =>
+        c.slaDeadline &&
+        c.status !== "Resolved" &&
+        c.status !== "Rejected" &&
+        new Date(c.slaDeadline) < new Date()
+    ).length;
+
     const counts = {
-        total: complaints.length,
-        pending: complaints.filter(c => c.status?.toLowerCase() === "pending").length,
+        total:      complaints.length,
+        pending:    complaints.filter(c => c.status?.toLowerCase() === "pending").length,
         inProgress: complaints.filter(c => c.status?.toLowerCase() === "in progress").length,
-        resolved: complaints.filter(c => c.status?.toLowerCase() === "resolved").length,
+        resolved:   complaints.filter(c => c.status?.toLowerCase() === "resolved").length,
     };
 
     useEffect(() => {
@@ -313,18 +424,11 @@ const AdminDashboard = () => {
             setLoading(true);
             setError(null);
             try {
-                console.log("Fetching complaints from http://localhost:5000/api/complaints");
                 const res = await fetch("http://localhost:5000/api/complaints");
-
-                if (!res.ok) {
-                    throw new Error(`Server error: ${res.status} ${res.statusText}`);
-                }
-
+                if (!res.ok) throw new Error(`Server error: ${res.status} ${res.statusText}`);
                 const data = await res.json();
-                console.log("Fetched complaints:", data);
                 setComplaints(Array.isArray(data) ? data : []);
             } catch (err) {
-                console.error("Fetch error:", err);
                 setError(err.message || "Failed to load complaints");
                 setComplaints([]);
             } finally {
@@ -358,6 +462,9 @@ const AdminDashboard = () => {
         { icon: "⚙️", label: "Settings" },
     ];
 
+    if (activeNav === "Stats")       return <StatsPage complaints={complaints} />;
+    if (activeNav === "Departments") return <DepartmentsPage />;
+
     return (
         <>
             <style>{GLOBAL_CSS}</style>
@@ -366,8 +473,7 @@ const AdminDashboard = () => {
 
                 {/* ── HEADER ── */}
                 <header style={{
-                    background: "#fff",
-                    padding: "16px 20px",
+                    background: "#fff", padding: "16px 20px",
                     display: "flex", alignItems: "center", justifyContent: "space-between",
                     position: "sticky", top: 0, zIndex: 50,
                     boxShadow: "0 4px 24px rgba(10,22,40,.3)"
@@ -381,38 +487,45 @@ const AdminDashboard = () => {
                         }}>🏛️</div>
                         <div>
                             <p style={{
-                                fontFamily: "Syne, sans-serif",
-                                fontWeight: 700,          // font-bold
-                                fontSize: "20px",         // text-xl (~20px)
-                                color: "var(--primary)",  // text-primary
-                                letterSpacing: "-0.025em" // tracking-tight
+                                fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "20px",
+                                color: "var(--navy)", letterSpacing: "-0.025em"
                             }}>Complaint Setu</p>
                             <p style={{ fontSize: 10, color: "var(--muted)", letterSpacing: "1.5px", textTransform: "uppercase" }}>Admin Dashboard</p>
                         </div>
                     </div>
-                    <button style={{
-                        width: 36, height: 36, borderRadius: 10, border: "1px solid var(--border)",
-                        background: "var(--surface)", color: "var(--text)", fontSize: 16, display: "flex",
-                        alignItems: "center", justifyContent: "center"
-                    }}>☰</button>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        {/* SLA breach badge */}
+                        {slaBreached > 0 && (
+                            <div style={{
+                                background: "#fff0f3", border: "1px solid #fecdd3",
+                                borderRadius: 8, padding: "4px 10px",
+                                fontSize: 11, fontWeight: 600, color: "#9f1239",
+                                display: "flex", alignItems: "center", gap: 5
+                            }}>
+                                ⚠ {slaBreached} SLA breach{slaBreached > 1 ? "es" : ""}
+                            </div>
+                        )}
+                        <button style={{
+                            width: 36, height: 36, borderRadius: 10, border: "1px solid var(--border)",
+                            background: "var(--surface)", color: "var(--text)", fontSize: 16, display: "flex",
+                            alignItems: "center", justifyContent: "center"
+                        }}>☰</button>
+                    </div>
                 </header>
 
                 {/* ── STAT STRIP ── */}
                 <div style={{ padding: "16px 16px 0", display: "flex", gap: 10 }}>
-                    <StatChip label="Total" count={counts.total} color="var(--navy)" />
-                    <StatChip label="Pending" count={counts.pending} color="#b45309" />
+                    <StatChip label="Total"       count={counts.total}      color="var(--navy)" />
+                    <StatChip label="Pending"     count={counts.pending}    color="#b45309" />
                     <StatChip label="In Progress" count={counts.inProgress} color="var(--sky)" />
-                    <StatChip label="Resolved" count={counts.resolved} color="var(--mint)" />
+                    <StatChip label="Resolved"    count={counts.resolved}   color="var(--mint)" />
                 </div>
 
                 {/* ── SECTION TITLE ── */}
                 <div style={{ padding: "20px 16px 0" }}>
                     <p style={{
-                        fontFamily: "Syne, sans-serif",
-                        fontWeight: 700,          // font-bold
-                        fontSize: "20px",         // text-xl (~20px)
-                        color: "var(--primary)",  // text-primary
-                        letterSpacing: "-0.025em" // tracking-tight
+                        fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "20px",
+                        color: "var(--navy)", letterSpacing: "-0.025em"
                     }}>All Complaints</p>
                     <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 2 }}>Manage and track citizen grievances</p>
                 </div>
@@ -474,16 +587,19 @@ const AdminDashboard = () => {
                         </div>
                     )}
 
-                    {currentItems.map((item, i) => (
+                    {currentItems.map((item) => (
                         <div
                             key={item._id}
                             className="card fade-up"
                             style={{
                                 padding: "20px 20px 20px 28px",
-                                position: "relative",
-                                overflow: "hidden",
+                                position: "relative", overflow: "hidden",
                                 background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%)",
-                                border: "1px solid rgba(226,232,244,0.8)",
+                                border: item.slaStatus === "breached"
+                                    ? "1.5px solid #fecdd3"
+                                    : item.slaStatus === "urgent"
+                                    ? "1.5px solid #fed7aa"
+                                    : "1px solid rgba(226,232,244,0.8)",
                                 boxShadow: "0 4px 20px rgba(10,22,40,0.08), 0 1px 3px rgba(10,22,40,0.04)",
                                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                             }}
@@ -501,57 +617,42 @@ const AdminDashboard = () => {
                                 boxShadow: `0 0 12px ${accentColor(item.status)}40`
                             }} />
 
+                            {/* ── Card Header ── */}
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                                 <div style={{ flex: 1 }}>
-                                    <div style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 8,
-                                        marginBottom: 6
-                                    }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                                         <span style={{
-                                            fontSize: 11,
-                                            color: "var(--muted)",
-                                            background: "var(--surface)",
-                                            padding: "2px 8px",
-                                            borderRadius: 6,
-                                            letterSpacing: "0.5px",
-                                            fontWeight: 500
+                                            fontSize: 11, color: "var(--muted)", background: "var(--surface)",
+                                            padding: "2px 8px", borderRadius: 6, letterSpacing: "0.5px", fontWeight: 500
                                         }}>
                                             #{item._id?.slice(-8).toUpperCase()}
                                         </span>
                                         <div style={{
-                                            width: 6,
-                                            height: 6,
-                                            borderRadius: "50%",
+                                            width: 6, height: 6, borderRadius: "50%",
                                             background: accentColor(item.status),
                                             boxShadow: `0 0 8px ${accentColor(item.status)}60`
                                         }} />
                                     </div>
                                     <h3 style={{
-                                        fontFamily: "Syne,sans-serif",
-                                        fontWeight: 700,
-                                        fontSize: 18,
-                                        color: "var(--navy)",
-                                        margin: 0,
-                                        lineHeight: 1.2
+                                        fontFamily: "Syne,sans-serif", fontWeight: 700, fontSize: 18,
+                                        color: "var(--navy)", margin: 0, lineHeight: 1.2
                                     }}>
                                         {item.category || "Uncategorised"}
                                     </h3>
+                                    <p style={{
+                                        marginTop: 6, fontSize: 12, fontWeight: "600",
+                                        color: item.priority === "High" ? "red" : item.priority === "Medium" ? "orange" : "green"
+                                    }}>
+                                        Priority: {item.priority}
+                                    </p>
                                 </div>
                                 <span className={pillClass(item.status)} style={{
-                                    fontSize: 11,
-                                    padding: "6px 12px",
-                                    borderRadius: 20,
+                                    fontSize: 11, padding: "6px 12px", borderRadius: 20,
                                     boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
                                 }}>
                                     <span style={{
-                                        width: 7,
-                                        height: 7,
-                                        borderRadius: "50%",
-                                        background: pillDot(item.status),
-                                        display: "inline-block",
-                                        marginRight: 6,
+                                        width: 7, height: 7, borderRadius: "50%",
+                                        background: pillDot(item.status), display: "inline-block", marginRight: 6,
                                         animation: item.status?.toLowerCase() === "in progress" ? "pulse-dot 1.6s infinite" : "none",
                                         boxShadow: `0 0 6px ${pillDot(item.status)}80`
                                     }} />
@@ -559,21 +660,14 @@ const AdminDashboard = () => {
                                 </span>
                             </div>
 
+                            {/* ── Info Grid (location + date + SLA) ── */}
                             <div style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                gap: 16,
-                                fontSize: 13,
-                                color: "var(--muted)",
-                                marginBottom: 20
+                                display: "grid", gridTemplateColumns: "1fr 1fr",
+                                gap: 10, fontSize: 13, color: "var(--muted)", marginBottom: 16
                             }}>
                                 <div style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 6,
-                                    background: "var(--surface)",
-                                    padding: "8px 12px",
-                                    borderRadius: 10,
+                                    display: "flex", alignItems: "center", gap: 6,
+                                    background: "var(--surface)", padding: "8px 12px", borderRadius: 10,
                                     border: "1px solid rgba(226,232,244,0.5)"
                                 }}>
                                     <span style={{ fontSize: 14 }}>📍</span>
@@ -583,12 +677,8 @@ const AdminDashboard = () => {
                                     </div>
                                 </div>
                                 <div style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 6,
-                                    background: "var(--surface)",
-                                    padding: "8px 12px",
-                                    borderRadius: 10,
+                                    display: "flex", alignItems: "center", gap: 6,
+                                    background: "var(--surface)", padding: "8px 12px", borderRadius: 10,
                                     border: "1px solid rgba(226,232,244,0.5)"
                                 }}>
                                     <span style={{ fontSize: 14 }}>📅</span>
@@ -597,71 +687,53 @@ const AdminDashboard = () => {
                                         <p style={{ margin: 0, color: "var(--text)", fontWeight: 500 }}>{fmt(item.createdAt)}</p>
                                     </div>
                                 </div>
+
+                                {/* ── SLA Countdown spans full width ── */}
+                                <SLATimer complaint={item} />
                             </div>
 
-                            <div style={{
-                                display: "flex",
-                                gap: 12,
-                                marginTop: "auto"
-                            }}>
+                            {/* ── Action Buttons ── */}
+                            <div style={{ display: "flex", gap: 12, marginTop: "auto" }}>
                                 <button
                                     onClick={() => setUpdatingComplaint(item)}
                                     style={{
-                                        flex: 1,
-                                        padding: "12px 16px",
-                                        borderRadius: 12,
-                                        fontSize: 13,
-                                        fontWeight: 600,
+                                        flex: 1, padding: "12px 16px", borderRadius: 12,
+                                        fontSize: 13, fontWeight: 600,
                                         border: "1.5px solid var(--sky)",
                                         background: "linear-gradient(135deg, #fff 0%, #f8fafc 100%)",
-                                        color: "var(--sky)",
-                                        transition: "all 0.2s ease",
-                                        boxShadow: "0 2px 8px rgba(30,107,255,0.1)",
-                                        position: "relative",
-                                        overflow: "hidden"
+                                        color: "var(--sky)", transition: "all 0.2s ease",
+                                        boxShadow: "0 2px 8px rgba(30,107,255,0.1)"
                                     }}
                                     onMouseEnter={(e) => {
                                         e.target.style.background = "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)";
                                         e.target.style.transform = "translateY(-1px)";
-                                        e.target.style.boxShadow = "0 4px 16px rgba(30,107,255,0.2)";
                                     }}
                                     onMouseLeave={(e) => {
                                         e.target.style.background = "linear-gradient(135deg, #fff 0%, #f8fafc 100%)";
                                         e.target.style.transform = "translateY(0)";
-                                        e.target.style.boxShadow = "0 2px 8px rgba(30,107,255,0.1)";
                                     }}
                                 >
                                     <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
-                                        <span>✏️</span>
-                                        <span>Update Status</span>
+                                        <span>✏️</span><span>Update Status</span>
                                     </span>
                                 </button>
                                 <button
                                     onClick={() => setSelectedComplaint(item)}
                                     style={{
-                                        flex: 1.5,
-                                        padding: "12px 16px",
-                                        borderRadius: 12,
-                                        fontSize: 13,
-                                        fontWeight: 600,
+                                        flex: 1.5, padding: "12px 16px", borderRadius: 12,
+                                        fontSize: 13, fontWeight: 600,
                                         border: "1.5px solid var(--sky)",
                                         background: "linear-gradient(135deg, var(--sky) 0%, #1a5fb4 100%)",
-                                        color: "#fff",
-                                        transition: "all 0.2s ease",
-                                        boxShadow: "0 2px 8px rgba(30,107,255,0.3)",
-                                        position: "relative",
-                                        overflow: "hidden"
+                                        color: "#fff", transition: "all 0.2s ease",
+                                        boxShadow: "0 2px 8px rgba(30,107,255,0.3)"
                                     }}
-
                                     onMouseLeave={(e) => {
                                         e.target.style.background = "linear-gradient(135deg, var(--sky) 0%, #1a5fb4 100%)";
                                         e.target.style.transform = "translateY(0)";
-                                        e.target.style.boxShadow = "0 2px 8px rgba(30,107,255,0.3)";
                                     }}
                                 >
                                     <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
-                                        <span>👁️</span>
-                                        <span>View Details</span>
+                                        <span>👁️</span><span>View Details</span>
                                     </span>
                                 </button>
                             </div>
@@ -678,8 +750,7 @@ const AdminDashboard = () => {
                             style={{
                                 padding: "8px 16px", borderRadius: 10, border: "1.5px solid var(--border)",
                                 background: currentPage === 1 ? "var(--surface)" : "#fff",
-                                color: currentPage === 1 ? "var(--muted)" : "var(--navy)",
-                                fontSize: 13, fontWeight: 500
+                                color: currentPage === 1 ? "var(--muted)" : "var(--navy)", fontSize: 13, fontWeight: 500
                             }}
                         >← Prev</button>
                         <div style={{ display: "flex", gap: 6 }}>
@@ -690,8 +761,7 @@ const AdminDashboard = () => {
                                     style={{
                                         width: 32, height: 32, borderRadius: 8, border: "none", fontSize: 13, fontWeight: 600,
                                         background: n === currentPage ? "var(--sky)" : "var(--surface)",
-                                        color: n === currentPage ? "#fff" : "var(--muted)",
-                                        transition: "background .15s"
+                                        color: n === currentPage ? "#fff" : "var(--muted)", transition: "background .15s"
                                     }}
                                 >{n}</button>
                             ))}
@@ -702,8 +772,7 @@ const AdminDashboard = () => {
                             style={{
                                 padding: "8px 16px", borderRadius: 10, border: "1.5px solid var(--border)",
                                 background: currentPage === totalPages ? "var(--surface)" : "#fff",
-                                color: currentPage === totalPages ? "var(--muted)" : "var(--navy)",
-                                fontSize: 13, fontWeight: 500
+                                color: currentPage === totalPages ? "var(--muted)" : "var(--navy)", fontSize: 13, fontWeight: 500
                             }}
                         >Next →</button>
                     </div>
@@ -712,11 +781,9 @@ const AdminDashboard = () => {
                 {/* ── BOTTOM NAV ── */}
                 <nav className="bottom-nav" style={{
                     position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)",
-                    width: "100%",
-                    background: "rgba(255,255,255,.92)", backdropFilter: "blur(16px)",
-                    borderTop: "1px solid var(--border)",
-                    display: "flex", justifyContent: "space-around", padding: "8px 0 12px",
-                    boxShadow: "0 -4px 20px rgba(10,22,40,.08)"
+                    width: "100%", background: "rgba(255,255,255,.92)", backdropFilter: "blur(16px)",
+                    borderTop: "1px solid var(--border)", display: "flex", justifyContent: "space-around",
+                    padding: "8px 0 12px", boxShadow: "0 -4px 20px rgba(10,22,40,.08)"
                 }}>
                     {navItems.map(({ icon, label }) => {
                         const active = activeNav === label;

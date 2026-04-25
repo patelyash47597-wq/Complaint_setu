@@ -1,0 +1,1201 @@
+id,text,category,priority
+1,waterlogging in sector 1,Road,Medium
+2,bad smell in near school,Garbage,Medium
+3,potholes in sector 3,Road,High
+4,no water supply in market area,Water,High
+5,water leakage in bus stand,Water,Low
+6,power outage in bus stand,Electricity,High
+7,water leakage in sector 3,Water,Low
+8,bad smell in sector 2,Garbage,High
+9,water leakage in sector 2,Water,Medium
+10,waterlogging in bus stand,Road,Medium
+11,water leakage in near school,Water,High
+12,garbage not collected in bus stand,Garbage,High
+13,transformer issue in sector 4,Electricity,High
+14,bad smell in bus stand,Garbage,Medium
+15,road damaged in sector 1,Road,Low
+16,construction issue in sector 2,Road,Low
+17,power outage in near school,Electricity,High
+18,voltage fluctuation in near school,Electricity,Medium
+19,road damaged in sector 1,Road,Medium
+20,street light not working in near school,Electricity,High
+21,waterlogging in sector 3,Road,Low
+22,bad smell in market area,Garbage,High
+23,construction issue in sector 1,Road,Medium
+24,water leakage in sector 3,Water,Medium
+25,potholes in sector 5,Road,High
+26,low pressure in market area,Water,Medium
+27,voltage fluctuation in near school,Electricity,Medium
+28,dirty water in sector 2,Water,Low
+29,overflowing bins in sector 1,Garbage,High
+30,construction issue in sector 3,Road,High
+31,low pressure in sector 3,Water,Medium
+32,water leakage in sector 3,Water,Low
+33,waterlogging in sector 4,Road,Low
+34,construction issue in bus stand,Road,Medium
+35,street light not working in bus stand,Electricity,High
+36,overflowing bins in sector 4,Garbage,High
+37,transformer issue in sector 1,Electricity,Low
+38,garbage not collected in sector 3,Garbage,High
+39,bad smell in sector 4,Garbage,Low
+40,bad smell in market area,Garbage,Medium
+41,bad smell in near school,Garbage,Low
+42,bad smell in sector 5,Garbage,Low
+43,water leakage in sector 2,Water,Low
+44,overflowing bins in sector 1,Garbage,High
+45,low pressure in market area,Water,Medium
+46,overflowing bins in sector 5,Garbage,High
+47,power outage in bus stand,Electricity,High
+48,waterlogging in sector 4,Road,High
+49,transformer issue in near school,Electricity,Low
+50,potholes in near school,Road,Medium
+51,potholes in sector 4,Road,High
+52,potholes in bus stand,Road,Low
+53,overflowing bins in sector 1,Garbage,High
+54,water leakage in sector 3,Water,Medium
+55,road damaged in sector 4,Road,High
+56,power outage in near school,Electricity,High
+57,transformer issue in sector 5,Electricity,Medium
+58,no water supply in sector 1,Water,High
+59,no water supply in bus stand,Water,High
+60,irregular cleaning in near school,Garbage,Low
+61,street light not working in sector 3,Electricity,High
+62,waterlogging in sector 5,Road,High
+63,transformer issue in sector 1,Electricity,Medium
+64,dirty water in bus stand,Water,Medium
+65,irregular cleaning in sector 2,Garbage,Low
+66,low pressure in sector 5,Water,Medium
+67,power outage in bus stand,Electricity,High
+68,low pressure in sector 2,Water,Medium
+69,potholes in sector 1,Road,High
+70,street light not working in sector 5,Electricity,High
+71,waterlogging in sector 1,Road,High
+72,overflowing bins in market area,Garbage,High
+73,garbage not collected in sector 3,Garbage,High
+74,garbage not collected in sector 2,Garbage,High
+75,power outage in sector 5,Electricity,High
+76,dirty water in sector 4,Water,High
+77,water leakage in sector 4,Water,Low
+78,voltage fluctuation in sector 3,Electricity,Medium
+79,voltage fluctuation in sector 2,Electricity,Medium
+80,road damaged in market area,Road,Low
+81,overflowing bins in near school,Garbage,High
+82,dirty water in sector 1,Water,High
+83,power outage in sector 5,Electricity,High
+84,bad smell in bus stand,Garbage,Low
+85,dirty water in sector 5,Water,Medium
+86,garbage not collected in near school,Garbage,High
+87,irregular cleaning in sector 1,Garbage,Medium
+88,garbage not collected in sector 4,Garbage,High
+89,garbage not collected in bus stand,Garbage,High
+90,power outage in sector 4,Electricity,High
+91,potholes in sector 4,Road,Medium
+92,irregular cleaning in market area,Garbage,High
+93,waterlogging in sector 2,Road,Medium
+94,construction issue in bus stand,Road,High
+95,street light not working in market area,Electricity,High
+96,street light not working in sector 4,Electricity,High
+97,street light not working in bus stand,Electricity,High
+98,transformer issue in sector 3,Electricity,High
+99,dirty water in sector 3,Water,Low
+100,potholes in market area,Road,High
+101,road damaged in near school,Road,High
+102,overflowing bins in market area,Garbage,High
+103,bad smell in sector 1,Garbage,Low
+104,garbage not collected in near school,Garbage,High
+105,road damaged in sector 3,Road,High
+106,no water supply in near school,Water,High
+107,construction issue in near school,Road,Low
+108,street light not working in bus stand,Electricity,High
+109,street light not working in near school,Electricity,High
+110,waterlogging in bus stand,Road,Medium
+111,bad smell in market area,Garbage,Low
+112,water leakage in near school,Water,Medium
+113,low pressure in near school,Water,Medium
+114,power outage in sector 5,Electricity,High
+115,water leakage in sector 3,Water,High
+116,transformer issue in sector 4,Electricity,Medium
+117,garbage not collected in market area,Garbage,High
+118,power outage in sector 3,Electricity,High
+119,waterlogging in bus stand,Road,Medium
+120,dirty water in market area,Water,Low
+121,waterlogging in sector 3,Road,High
+122,no water supply in sector 2,Water,High
+123,low pressure in sector 1,Water,Medium
+124,power outage in sector 2,Electricity,High
+125,irregular cleaning in sector 2,Garbage,Medium
+126,street light not working in sector 1,Electricity,High
+127,road damaged in sector 3,Road,Medium
+128,potholes in sector 5,Road,Low
+129,dirty water in sector 5,Water,Medium
+130,irregular cleaning in sector 2,Garbage,High
+131,waterlogging in sector 1,Road,Medium
+132,potholes in sector 2,Road,Low
+133,road damaged in bus stand,Road,High
+134,power outage in sector 4,Electricity,High
+135,dirty water in sector 4,Water,Low
+136,dirty water in sector 5,Water,Low
+137,low pressure in sector 5,Water,Medium
+138,overflowing bins in sector 2,Garbage,High
+139,garbage not collected in market area,Garbage,High
+140,dirty water in sector 2,Water,Low
+141,overflowing bins in sector 1,Garbage,High
+142,street light not working in sector 4,Electricity,High
+143,garbage not collected in bus stand,Garbage,High
+144,road damaged in sector 3,Road,Medium
+145,construction issue in bus stand,Road,Medium
+146,dirty water in near school,Water,Low
+147,power outage in bus stand,Electricity,High
+148,water leakage in near school,Water,Medium
+149,waterlogging in market area,Road,High
+150,irregular cleaning in near school,Garbage,Medium
+151,overflowing bins in sector 5,Garbage,High
+152,overflowing bins in sector 1,Garbage,High
+153,power outage in sector 3,Electricity,High
+154,voltage fluctuation in sector 5,Electricity,Medium
+155,potholes in sector 2,Road,Low
+156,no water supply in near school,Water,High
+157,transformer issue in sector 1,Electricity,Low
+158,transformer issue in sector 2,Electricity,Medium
+159,water leakage in sector 5,Water,Low
+160,low pressure in sector 5,Water,Medium
+161,garbage not collected in sector 1,Garbage,High
+162,power outage in sector 5,Electricity,High
+163,transformer issue in bus stand,Electricity,High
+164,garbage not collected in sector 1,Garbage,High
+165,irregular cleaning in sector 2,Garbage,Medium
+166,power outage in near school,Electricity,High
+167,potholes in sector 3,Road,Medium
+168,low pressure in sector 3,Water,Medium
+169,water leakage in near school,Water,High
+170,dirty water in sector 2,Water,High
+171,no water supply in sector 5,Water,High
+172,potholes in sector 3,Road,Medium
+173,low pressure in sector 5,Water,Medium
+174,garbage not collected in sector 4,Garbage,High
+175,voltage fluctuation in sector 4,Electricity,Medium
+176,street light not working in sector 2,Electricity,High
+177,power outage in market area,Electricity,High
+178,street light not working in sector 2,Electricity,High
+179,waterlogging in near school,Road,High
+180,garbage not collected in sector 1,Garbage,High
+181,irregular cleaning in bus stand,Garbage,Medium
+182,dirty water in near school,Water,Low
+183,road damaged in sector 3,Road,High
+184,dirty water in sector 3,Water,Low
+185,irregular cleaning in market area,Garbage,High
+186,transformer issue in bus stand,Electricity,Low
+187,no water supply in sector 2,Water,High
+188,garbage not collected in sector 4,Garbage,High
+189,road damaged in sector 2,Road,Low
+190,no water supply in sector 2,Water,High
+191,waterlogging in bus stand,Road,Medium
+192,waterlogging in near school,Road,High
+193,irregular cleaning in sector 4,Garbage,High
+194,power outage in sector 2,Electricity,High
+195,bad smell in sector 4,Garbage,Medium
+196,irregular cleaning in sector 5,Garbage,Low
+197,garbage not collected in sector 1,Garbage,High
+198,irregular cleaning in sector 3,Garbage,High
+199,garbage not collected in near school,Garbage,High
+200,overflowing bins in sector 3,Garbage,High
+201,low pressure in sector 2,Water,Medium
+202,transformer issue in sector 1,Electricity,Low
+203,road damaged in sector 3,Road,High
+204,street light not working in sector 3,Electricity,High
+205,bad smell in sector 3,Garbage,Medium
+206,construction issue in sector 4,Road,High
+207,waterlogging in sector 5,Road,Low
+208,irregular cleaning in sector 4,Garbage,Medium
+209,voltage fluctuation in sector 5,Electricity,Medium
+210,overflowing bins in sector 4,Garbage,High
+211,potholes in bus stand,Road,Low
+212,waterlogging in sector 4,Road,High
+213,waterlogging in market area,Road,High
+214,power outage in sector 2,Electricity,High
+215,water leakage in sector 2,Water,Low
+216,water leakage in near school,Water,High
+217,voltage fluctuation in bus stand,Electricity,Medium
+218,road damaged in sector 2,Road,Medium
+219,garbage not collected in bus stand,Garbage,High
+220,road damaged in bus stand,Road,Medium
+221,potholes in sector 5,Road,High
+222,construction issue in sector 1,Road,High
+223,irregular cleaning in bus stand,Garbage,Medium
+224,power outage in sector 4,Electricity,High
+225,road damaged in near school,Road,High
+226,construction issue in sector 4,Road,Medium
+227,dirty water in sector 1,Water,High
+228,road damaged in sector 5,Road,Medium
+229,water leakage in near school,Water,Low
+230,bad smell in sector 3,Garbage,Low
+231,road damaged in sector 2,Road,Medium
+232,low pressure in sector 1,Water,Medium
+233,power outage in sector 3,Electricity,High
+234,irregular cleaning in sector 3,Garbage,Medium
+235,waterlogging in near school,Road,Medium
+236,water leakage in sector 1,Water,Low
+237,potholes in bus stand,Road,High
+238,overflowing bins in near school,Garbage,High
+239,bad smell in near school,Garbage,High
+240,irregular cleaning in sector 4,Garbage,High
+241,low pressure in market area,Water,Medium
+242,voltage fluctuation in market area,Electricity,Medium
+243,dirty water in sector 5,Water,High
+244,overflowing bins in sector 4,Garbage,High
+245,street light not working in bus stand,Electricity,High
+246,water leakage in sector 5,Water,Medium
+247,potholes in sector 2,Road,Low
+248,construction issue in sector 2,Road,High
+249,dirty water in near school,Water,High
+250,water leakage in near school,Water,High
+251,street light not working in sector 3,Electricity,High
+252,potholes in bus stand,Road,Low
+253,garbage not collected in sector 4,Garbage,High
+254,irregular cleaning in market area,Garbage,High
+255,construction issue in sector 3,Road,Medium
+256,construction issue in sector 4,Road,High
+257,overflowing bins in sector 2,Garbage,High
+258,transformer issue in sector 5,Electricity,Low
+259,construction issue in market area,Road,High
+260,street light not working in sector 3,Electricity,High
+261,potholes in sector 5,Road,Low
+262,low pressure in market area,Water,Medium
+263,power outage in near school,Electricity,High
+264,low pressure in sector 1,Water,Medium
+265,garbage not collected in near school,Garbage,High
+266,bad smell in bus stand,Garbage,Medium
+267,bad smell in near school,Garbage,Medium
+268,water leakage in bus stand,Water,Medium
+269,construction issue in sector 2,Road,Medium
+270,potholes in sector 1,Road,High
+271,bad smell in near school,Garbage,High
+272,potholes in sector 3,Road,Low
+273,no water supply in near school,Water,High
+274,bad smell in sector 4,Garbage,High
+275,garbage not collected in sector 5,Garbage,High
+276,no water supply in sector 5,Water,High
+277,low pressure in sector 2,Water,Medium
+278,no water supply in sector 3,Water,High
+279,low pressure in market area,Water,Medium
+280,waterlogging in near school,Road,Medium
+281,transformer issue in sector 1,Electricity,Low
+282,road damaged in near school,Road,Medium
+283,construction issue in sector 3,Road,Low
+284,street light not working in sector 5,Electricity,High
+285,transformer issue in bus stand,Electricity,High
+286,voltage fluctuation in bus stand,Electricity,Medium
+287,power outage in sector 4,Electricity,High
+288,low pressure in sector 3,Water,Medium
+289,no water supply in bus stand,Water,High
+290,voltage fluctuation in sector 4,Electricity,Medium
+291,overflowing bins in near school,Garbage,High
+292,no water supply in sector 2,Water,High
+293,bad smell in sector 4,Garbage,High
+294,voltage fluctuation in sector 3,Electricity,Medium
+295,irregular cleaning in sector 1,Garbage,Medium
+296,transformer issue in bus stand,Electricity,Low
+297,road damaged in sector 1,Road,High
+298,voltage fluctuation in sector 3,Electricity,Medium
+299,overflowing bins in near school,Garbage,High
+300,water leakage in sector 2,Water,Low
+301,waterlogging in sector 5,Road,Low
+302,irregular cleaning in market area,Garbage,Low
+303,garbage not collected in market area,Garbage,High
+304,bad smell in sector 1,Garbage,Medium
+305,street light not working in market area,Electricity,High
+306,waterlogging in near school,Road,Medium
+307,no water supply in sector 2,Water,High
+308,garbage not collected in sector 4,Garbage,High
+309,power outage in sector 2,Electricity,High
+310,garbage not collected in near school,Garbage,High
+311,garbage not collected in sector 2,Garbage,High
+312,garbage not collected in sector 2,Garbage,High
+313,construction issue in sector 4,Road,Medium
+314,road damaged in bus stand,Road,Medium
+315,transformer issue in bus stand,Electricity,High
+316,garbage not collected in market area,Garbage,High
+317,construction issue in sector 1,Road,Low
+318,waterlogging in sector 4,Road,High
+319,dirty water in near school,Water,Low
+320,potholes in sector 1,Road,Low
+321,water leakage in sector 5,Water,Low
+322,no water supply in sector 5,Water,High
+323,potholes in near school,Road,High
+324,power outage in sector 1,Electricity,High
+325,potholes in sector 2,Road,High
+326,overflowing bins in sector 3,Garbage,High
+327,dirty water in sector 3,Water,High
+328,irregular cleaning in sector 5,Garbage,High
+329,voltage fluctuation in market area,Electricity,Medium
+330,waterlogging in sector 5,Road,Low
+331,no water supply in near school,Water,High
+332,overflowing bins in market area,Garbage,High
+333,dirty water in bus stand,Water,Medium
+334,water leakage in sector 4,Water,Medium
+335,low pressure in sector 4,Water,Medium
+336,dirty water in bus stand,Water,Medium
+337,irregular cleaning in near school,Garbage,Medium
+338,power outage in sector 5,Electricity,High
+339,road damaged in sector 2,Road,Low
+340,low pressure in bus stand,Water,Medium
+341,transformer issue in sector 4,Electricity,Medium
+342,overflowing bins in market area,Garbage,High
+343,bad smell in sector 3,Garbage,Low
+344,irregular cleaning in sector 2,Garbage,High
+345,water leakage in bus stand,Water,Low
+346,construction issue in market area,Road,Medium
+347,road damaged in market area,Road,High
+348,water leakage in sector 4,Water,Low
+349,transformer issue in sector 3,Electricity,High
+350,overflowing bins in sector 5,Garbage,High
+351,no water supply in sector 5,Water,High
+352,waterlogging in sector 1,Road,Medium
+353,street light not working in sector 5,Electricity,High
+354,irregular cleaning in sector 5,Garbage,Low
+355,waterlogging in near school,Road,Low
+356,voltage fluctuation in sector 3,Electricity,Medium
+357,waterlogging in sector 2,Road,High
+358,irregular cleaning in bus stand,Garbage,Medium
+359,bad smell in near school,Garbage,Low
+360,dirty water in sector 4,Water,Medium
+361,transformer issue in sector 1,Electricity,High
+362,irregular cleaning in sector 4,Garbage,High
+363,water leakage in sector 5,Water,Low
+364,water leakage in sector 2,Water,High
+365,transformer issue in sector 3,Electricity,High
+366,voltage fluctuation in bus stand,Electricity,Medium
+367,construction issue in sector 2,Road,High
+368,garbage not collected in market area,Garbage,High
+369,garbage not collected in sector 4,Garbage,High
+370,dirty water in sector 4,Water,Low
+371,irregular cleaning in bus stand,Garbage,Low
+372,bad smell in sector 4,Garbage,Medium
+373,street light not working in sector 2,Electricity,High
+374,voltage fluctuation in market area,Electricity,Medium
+375,low pressure in sector 5,Water,Medium
+376,bad smell in sector 5,Garbage,Low
+377,construction issue in sector 3,Road,Low
+378,road damaged in sector 4,Road,Medium
+379,no water supply in sector 5,Water,High
+380,garbage not collected in sector 2,Garbage,High
+381,low pressure in sector 4,Water,Medium
+382,road damaged in sector 2,Road,Medium
+383,street light not working in bus stand,Electricity,High
+384,voltage fluctuation in sector 3,Electricity,Medium
+385,potholes in sector 2,Road,Medium
+386,transformer issue in sector 5,Electricity,Low
+387,irregular cleaning in sector 3,Garbage,High
+388,no water supply in sector 5,Water,High
+389,dirty water in sector 1,Water,High
+390,low pressure in sector 3,Water,Medium
+391,overflowing bins in sector 4,Garbage,High
+392,voltage fluctuation in sector 5,Electricity,Medium
+393,dirty water in sector 1,Water,Low
+394,overflowing bins in sector 3,Garbage,High
+395,transformer issue in sector 4,Electricity,High
+396,potholes in sector 2,Road,Medium
+397,no water supply in sector 4,Water,High
+398,garbage not collected in sector 3,Garbage,High
+399,construction issue in sector 4,Road,High
+400,low pressure in sector 4,Water,Medium
+401,garbage not collected in sector 5,Garbage,High
+402,bad smell in sector 2,Garbage,Medium
+403,water leakage in sector 1,Water,Medium
+404,overflowing bins in sector 4,Garbage,High
+405,potholes in sector 5,Road,High
+406,water leakage in sector 5,Water,Medium
+407,voltage fluctuation in sector 2,Electricity,Medium
+408,low pressure in sector 3,Water,Medium
+409,street light not working in sector 3,Electricity,High
+410,no water supply in bus stand,Water,High
+411,water leakage in bus stand,Water,Medium
+412,waterlogging in near school,Road,Low
+413,garbage not collected in sector 3,Garbage,High
+414,no water supply in sector 1,Water,High
+415,dirty water in sector 5,Water,Medium
+416,waterlogging in sector 2,Road,Low
+417,voltage fluctuation in sector 4,Electricity,Medium
+418,overflowing bins in sector 2,Garbage,High
+419,voltage fluctuation in near school,Electricity,Medium
+420,voltage fluctuation in market area,Electricity,Medium
+421,low pressure in near school,Water,Medium
+422,water leakage in sector 1,Water,Low
+423,overflowing bins in sector 3,Garbage,High
+424,construction issue in sector 2,Road,High
+425,street light not working in near school,Electricity,High
+426,low pressure in bus stand,Water,Medium
+427,no water supply in market area,Water,High
+428,water leakage in near school,Water,Low
+429,low pressure in market area,Water,Medium
+430,road damaged in sector 2,Road,Medium
+431,overflowing bins in sector 4,Garbage,High
+432,power outage in bus stand,Electricity,High
+433,potholes in sector 2,Road,High
+434,water leakage in market area,Water,High
+435,power outage in sector 1,Electricity,High
+436,road damaged in sector 5,Road,High
+437,no water supply in near school,Water,High
+438,water leakage in sector 1,Water,Medium
+439,road damaged in market area,Road,Medium
+440,garbage not collected in market area,Garbage,High
+441,overflowing bins in market area,Garbage,High
+442,transformer issue in sector 2,Electricity,Low
+443,power outage in sector 5,Electricity,High
+444,street light not working in sector 3,Electricity,High
+445,low pressure in bus stand,Water,Medium
+446,overflowing bins in sector 2,Garbage,High
+447,waterlogging in near school,Road,Medium
+448,bad smell in near school,Garbage,Low
+449,power outage in market area,Electricity,High
+450,garbage not collected in sector 3,Garbage,High
+451,low pressure in bus stand,Water,Medium
+452,water leakage in sector 1,Water,Medium
+453,no water supply in bus stand,Water,High
+454,water leakage in sector 2,Water,Medium
+455,construction issue in near school,Road,Low
+456,water leakage in sector 5,Water,Medium
+457,irregular cleaning in sector 3,Garbage,Medium
+458,transformer issue in market area,Electricity,High
+459,road damaged in sector 4,Road,Low
+460,bad smell in bus stand,Garbage,Medium
+461,overflowing bins in sector 5,Garbage,High
+462,potholes in near school,Road,Low
+463,voltage fluctuation in sector 2,Electricity,Medium
+464,street light not working in sector 5,Electricity,High
+465,no water supply in sector 2,Water,High
+466,overflowing bins in sector 3,Garbage,High
+467,potholes in sector 5,Road,Low
+468,garbage not collected in near school,Garbage,High
+469,irregular cleaning in market area,Garbage,Medium
+470,potholes in sector 4,Road,Medium
+471,irregular cleaning in sector 1,Garbage,Medium
+472,voltage fluctuation in bus stand,Electricity,Medium
+473,no water supply in near school,Water,High
+474,dirty water in near school,Water,High
+475,bad smell in sector 2,Garbage,High
+476,potholes in sector 2,Road,Medium
+477,water leakage in bus stand,Water,Low
+478,low pressure in sector 5,Water,Medium
+479,overflowing bins in sector 4,Garbage,High
+480,irregular cleaning in sector 3,Garbage,Medium
+481,construction issue in sector 2,Road,Low
+482,waterlogging in near school,Road,High
+483,construction issue in sector 3,Road,Low
+484,construction issue in near school,Road,Low
+485,irregular cleaning in near school,Garbage,Medium
+486,power outage in sector 4,Electricity,High
+487,voltage fluctuation in sector 5,Electricity,Medium
+488,road damaged in near school,Road,Medium
+489,power outage in market area,Electricity,High
+490,irregular cleaning in market area,Garbage,Medium
+491,road damaged in sector 4,Road,High
+492,dirty water in sector 3,Water,Low
+493,water leakage in bus stand,Water,High
+494,road damaged in bus stand,Road,Low
+495,garbage not collected in sector 1,Garbage,High
+496,power outage in sector 4,Electricity,High
+497,waterlogging in sector 2,Road,High
+498,transformer issue in sector 1,Electricity,Low
+499,potholes in sector 2,Road,Low
+500,overflowing bins in market area,Garbage,High
+501,power outage in sector 1,Electricity,High
+502,road damaged in sector 3,Road,High
+503,overflowing bins in sector 3,Garbage,High
+504,power outage in bus stand,Electricity,High
+505,bad smell in sector 4,Garbage,High
+506,overflowing bins in near school,Garbage,High
+507,dirty water in sector 1,Water,Medium
+508,no water supply in bus stand,Water,High
+509,power outage in sector 3,Electricity,High
+510,low pressure in sector 5,Water,Medium
+511,garbage not collected in sector 4,Garbage,High
+512,voltage fluctuation in sector 4,Electricity,Medium
+513,road damaged in bus stand,Road,High
+514,potholes in sector 1,Road,High
+515,street light not working in sector 5,Electricity,High
+516,potholes in sector 3,Road,High
+517,overflowing bins in near school,Garbage,High
+518,transformer issue in bus stand,Electricity,High
+519,dirty water in sector 2,Water,Low
+520,garbage not collected in market area,Garbage,High
+521,road damaged in sector 2,Road,Medium
+522,voltage fluctuation in bus stand,Electricity,Medium
+523,water leakage in sector 1,Water,Low
+524,potholes in bus stand,Road,Low
+525,low pressure in sector 5,Water,Medium
+526,irregular cleaning in sector 4,Garbage,High
+527,power outage in bus stand,Electricity,High
+528,no water supply in bus stand,Water,High
+529,overflowing bins in sector 3,Garbage,High
+530,low pressure in near school,Water,Medium
+531,garbage not collected in sector 3,Garbage,High
+532,construction issue in sector 4,Road,High
+533,dirty water in sector 1,Water,Medium
+534,transformer issue in bus stand,Electricity,Low
+535,low pressure in market area,Water,Medium
+536,potholes in sector 5,Road,Low
+537,power outage in sector 4,Electricity,High
+538,road damaged in sector 5,Road,Medium
+539,garbage not collected in sector 2,Garbage,High
+540,waterlogging in bus stand,Road,Low
+541,bad smell in bus stand,Garbage,Low
+542,no water supply in sector 3,Water,High
+543,voltage fluctuation in bus stand,Electricity,Medium
+544,dirty water in market area,Water,Low
+545,road damaged in near school,Road,Medium
+546,water leakage in sector 5,Water,Medium
+547,dirty water in sector 4,Water,Low
+548,street light not working in market area,Electricity,High
+549,dirty water in sector 4,Water,Medium
+550,potholes in bus stand,Road,Medium
+551,water leakage in sector 2,Water,Low
+552,no water supply in sector 1,Water,High
+553,garbage not collected in bus stand,Garbage,High
+554,overflowing bins in bus stand,Garbage,High
+555,irregular cleaning in market area,Garbage,Medium
+556,overflowing bins in sector 4,Garbage,High
+557,transformer issue in sector 3,Electricity,High
+558,road damaged in sector 4,Road,Medium
+559,transformer issue in sector 4,Electricity,High
+560,garbage not collected in sector 1,Garbage,High
+561,no water supply in sector 4,Water,High
+562,dirty water in sector 1,Water,Medium
+563,water leakage in sector 5,Water,Medium
+564,voltage fluctuation in market area,Electricity,Medium
+565,overflowing bins in sector 2,Garbage,High
+566,transformer issue in sector 3,Electricity,Medium
+567,power outage in sector 5,Electricity,High
+568,waterlogging in near school,Road,Low
+569,power outage in market area,Electricity,High
+570,dirty water in sector 5,Water,Low
+571,low pressure in sector 5,Water,Medium
+572,road damaged in sector 3,Road,Medium
+573,construction issue in sector 4,Road,Low
+574,potholes in sector 3,Road,Low
+575,transformer issue in market area,Electricity,Medium
+576,water leakage in market area,Water,High
+577,power outage in sector 1,Electricity,High
+578,water leakage in sector 1,Water,Medium
+579,potholes in sector 4,Road,High
+580,water leakage in sector 1,Water,Medium
+581,transformer issue in near school,Electricity,Medium
+582,garbage not collected in sector 3,Garbage,High
+583,street light not working in sector 1,Electricity,High
+584,no water supply in market area,Water,High
+585,garbage not collected in bus stand,Garbage,High
+586,overflowing bins in market area,Garbage,High
+587,irregular cleaning in sector 1,Garbage,Medium
+588,dirty water in near school,Water,High
+589,low pressure in sector 4,Water,Medium
+590,garbage not collected in sector 3,Garbage,High
+591,transformer issue in sector 1,Electricity,Medium
+592,dirty water in market area,Water,Low
+593,water leakage in sector 5,Water,Medium
+594,overflowing bins in sector 2,Garbage,High
+595,garbage not collected in sector 2,Garbage,High
+596,construction issue in market area,Road,High
+597,construction issue in sector 2,Road,High
+598,potholes in sector 1,Road,Low
+599,no water supply in bus stand,Water,High
+600,waterlogging in market area,Road,Low
+601,transformer issue in sector 1,Electricity,High
+602,road damaged in sector 4,Road,High
+603,power outage in sector 3,Electricity,High
+604,construction issue in near school,Road,Low
+605,overflowing bins in sector 3,Garbage,High
+606,road damaged in near school,Road,Low
+607,potholes in sector 5,Road,Low
+608,voltage fluctuation in sector 5,Electricity,Medium
+609,construction issue in sector 1,Road,Low
+610,waterlogging in sector 5,Road,Medium
+611,construction issue in sector 3,Road,Low
+612,potholes in market area,Road,Medium
+613,no water supply in sector 3,Water,High
+614,low pressure in sector 5,Water,Medium
+615,street light not working in sector 3,Electricity,High
+616,no water supply in market area,Water,High
+617,power outage in sector 3,Electricity,High
+618,garbage not collected in sector 4,Garbage,High
+619,no water supply in sector 3,Water,High
+620,street light not working in sector 2,Electricity,High
+621,bad smell in near school,Garbage,Low
+622,potholes in sector 3,Road,High
+623,power outage in sector 2,Electricity,High
+624,transformer issue in sector 5,Electricity,High
+625,voltage fluctuation in sector 5,Electricity,Medium
+626,waterlogging in sector 1,Road,Low
+627,low pressure in sector 4,Water,Medium
+628,construction issue in sector 1,Road,High
+629,dirty water in sector 2,Water,High
+630,voltage fluctuation in near school,Electricity,Medium
+631,irregular cleaning in near school,Garbage,Medium
+632,street light not working in sector 2,Electricity,High
+633,power outage in sector 2,Electricity,High
+634,no water supply in near school,Water,High
+635,garbage not collected in sector 1,Garbage,High
+636,garbage not collected in sector 3,Garbage,High
+637,potholes in sector 5,Road,Low
+638,power outage in sector 3,Electricity,High
+639,construction issue in sector 3,Road,Medium
+640,garbage not collected in market area,Garbage,High
+641,bad smell in bus stand,Garbage,Medium
+642,water leakage in market area,Water,High
+643,transformer issue in near school,Electricity,High
+644,street light not working in bus stand,Electricity,High
+645,power outage in near school,Electricity,High
+646,potholes in sector 1,Road,Medium
+647,low pressure in market area,Water,Medium
+648,potholes in market area,Road,Low
+649,irregular cleaning in sector 3,Garbage,Low
+650,construction issue in sector 1,Road,High
+651,power outage in near school,Electricity,High
+652,construction issue in sector 2,Road,Low
+653,construction issue in market area,Road,Low
+654,power outage in market area,Electricity,High
+655,water leakage in market area,Water,High
+656,irregular cleaning in market area,Garbage,Medium
+657,power outage in sector 1,Electricity,High
+658,water leakage in sector 4,Water,Medium
+659,overflowing bins in sector 1,Garbage,High
+660,overflowing bins in market area,Garbage,High
+661,bad smell in sector 4,Garbage,Low
+662,transformer issue in near school,Electricity,Low
+663,potholes in sector 4,Road,Low
+664,construction issue in near school,Road,High
+665,voltage fluctuation in bus stand,Electricity,Medium
+666,low pressure in sector 4,Water,Medium
+667,construction issue in sector 2,Road,High
+668,voltage fluctuation in sector 1,Electricity,Medium
+669,potholes in sector 1,Road,Low
+670,garbage not collected in sector 5,Garbage,High
+671,water leakage in near school,Water,Low
+672,waterlogging in sector 2,Road,High
+673,voltage fluctuation in bus stand,Electricity,Medium
+674,potholes in sector 1,Road,Medium
+675,street light not working in market area,Electricity,High
+676,water leakage in near school,Water,Low
+677,irregular cleaning in sector 3,Garbage,High
+678,dirty water in sector 2,Water,Low
+679,street light not working in sector 3,Electricity,High
+680,dirty water in sector 3,Water,High
+681,no water supply in sector 1,Water,High
+682,dirty water in sector 3,Water,Low
+683,street light not working in market area,Electricity,High
+684,garbage not collected in sector 4,Garbage,High
+685,no water supply in near school,Water,High
+686,low pressure in market area,Water,Medium
+687,dirty water in sector 5,Water,Medium
+688,garbage not collected in sector 5,Garbage,High
+689,transformer issue in bus stand,Electricity,Medium
+690,construction issue in sector 1,Road,High
+691,bad smell in sector 2,Garbage,Medium
+692,no water supply in bus stand,Water,High
+693,irregular cleaning in sector 3,Garbage,Low
+694,construction issue in market area,Road,Low
+695,voltage fluctuation in sector 3,Electricity,Medium
+696,waterlogging in market area,Road,Low
+697,street light not working in sector 5,Electricity,High
+698,power outage in bus stand,Electricity,High
+699,garbage not collected in sector 3,Garbage,High
+700,road damaged in near school,Road,High
+701,potholes in market area,Road,Medium
+702,road damaged in sector 1,Road,Medium
+703,garbage not collected in sector 5,Garbage,High
+704,garbage not collected in sector 2,Garbage,High
+705,irregular cleaning in near school,Garbage,Medium
+706,potholes in near school,Road,Medium
+707,transformer issue in sector 5,Electricity,High
+708,voltage fluctuation in sector 3,Electricity,Medium
+709,potholes in near school,Road,High
+710,street light not working in near school,Electricity,High
+711,power outage in bus stand,Electricity,High
+712,road damaged in market area,Road,Low
+713,dirty water in near school,Water,High
+714,overflowing bins in sector 5,Garbage,High
+715,garbage not collected in near school,Garbage,High
+716,overflowing bins in sector 2,Garbage,High
+717,garbage not collected in sector 1,Garbage,High
+718,voltage fluctuation in sector 3,Electricity,Medium
+719,overflowing bins in sector 3,Garbage,High
+720,voltage fluctuation in sector 3,Electricity,Medium
+721,potholes in sector 2,Road,Medium
+722,water leakage in sector 4,Water,High
+723,garbage not collected in bus stand,Garbage,High
+724,water leakage in sector 3,Water,Low
+725,water leakage in bus stand,Water,Low
+726,power outage in bus stand,Electricity,High
+727,low pressure in sector 1,Water,Medium
+728,low pressure in bus stand,Water,Medium
+729,voltage fluctuation in sector 5,Electricity,Medium
+730,water leakage in near school,Water,Medium
+731,transformer issue in sector 4,Electricity,High
+732,water leakage in sector 4,Water,Medium
+733,overflowing bins in near school,Garbage,High
+734,road damaged in bus stand,Road,Medium
+735,waterlogging in sector 5,Road,Low
+736,irregular cleaning in sector 5,Garbage,Low
+737,transformer issue in near school,Electricity,Medium
+738,low pressure in sector 3,Water,Medium
+739,transformer issue in sector 3,Electricity,Low
+740,power outage in near school,Electricity,High
+741,bad smell in sector 1,Garbage,High
+742,potholes in sector 1,Road,High
+743,bad smell in sector 5,Garbage,High
+744,voltage fluctuation in near school,Electricity,Medium
+745,irregular cleaning in sector 5,Garbage,Low
+746,waterlogging in near school,Road,High
+747,power outage in sector 2,Electricity,High
+748,voltage fluctuation in sector 3,Electricity,Medium
+749,street light not working in sector 3,Electricity,High
+750,overflowing bins in market area,Garbage,High
+751,waterlogging in near school,Road,Medium
+752,potholes in near school,Road,Low
+753,road damaged in sector 2,Road,Low
+754,voltage fluctuation in sector 1,Electricity,Medium
+755,transformer issue in sector 4,Electricity,Low
+756,potholes in sector 1,Road,Medium
+757,road damaged in bus stand,Road,High
+758,bad smell in sector 4,Garbage,High
+759,transformer issue in market area,Electricity,Low
+760,voltage fluctuation in near school,Electricity,Medium
+761,street light not working in sector 4,Electricity,High
+762,power outage in sector 2,Electricity,High
+763,water leakage in bus stand,Water,High
+764,potholes in bus stand,Road,Medium
+765,garbage not collected in sector 2,Garbage,High
+766,voltage fluctuation in sector 3,Electricity,Medium
+767,low pressure in market area,Water,Medium
+768,irregular cleaning in sector 2,Garbage,High
+769,irregular cleaning in sector 5,Garbage,High
+770,irregular cleaning in sector 2,Garbage,Low
+771,potholes in market area,Road,Low
+772,power outage in sector 5,Electricity,High
+773,construction issue in bus stand,Road,High
+774,transformer issue in sector 3,Electricity,Low
+775,garbage not collected in sector 2,Garbage,High
+776,water leakage in sector 3,Water,Low
+777,power outage in sector 1,Electricity,High
+778,potholes in sector 5,Road,Medium
+779,low pressure in sector 4,Water,Medium
+780,irregular cleaning in bus stand,Garbage,High
+781,dirty water in bus stand,Water,High
+782,irregular cleaning in sector 1,Garbage,Low
+783,overflowing bins in sector 3,Garbage,High
+784,bad smell in sector 5,Garbage,Low
+785,garbage not collected in sector 2,Garbage,High
+786,power outage in market area,Electricity,High
+787,voltage fluctuation in sector 3,Electricity,Medium
+788,irregular cleaning in bus stand,Garbage,Low
+789,power outage in sector 2,Electricity,High
+790,low pressure in bus stand,Water,Medium
+791,road damaged in sector 4,Road,Low
+792,low pressure in sector 5,Water,Medium
+793,water leakage in near school,Water,High
+794,dirty water in sector 1,Water,Low
+795,street light not working in market area,Electricity,High
+796,no water supply in sector 3,Water,High
+797,waterlogging in sector 2,Road,Low
+798,dirty water in bus stand,Water,Medium
+799,irregular cleaning in sector 5,Garbage,Low
+800,water leakage in market area,Water,High
+801,water leakage in sector 5,Water,Medium
+802,dirty water in sector 2,Water,High
+803,transformer issue in market area,Electricity,High
+804,no water supply in sector 2,Water,High
+805,no water supply in sector 3,Water,High
+806,road damaged in bus stand,Road,Medium
+807,potholes in market area,Road,Medium
+808,street light not working in bus stand,Electricity,High
+809,potholes in sector 5,Road,High
+810,overflowing bins in sector 1,Garbage,High
+811,garbage not collected in near school,Garbage,High
+812,bad smell in near school,Garbage,Low
+813,irregular cleaning in bus stand,Garbage,Medium
+814,construction issue in bus stand,Road,Medium
+815,dirty water in sector 1,Water,Low
+816,street light not working in bus stand,Electricity,High
+817,construction issue in sector 1,Road,High
+818,waterlogging in near school,Road,Medium
+819,waterlogging in sector 2,Road,Medium
+820,irregular cleaning in bus stand,Garbage,Medium
+821,waterlogging in bus stand,Road,Low
+822,waterlogging in near school,Road,Low
+823,street light not working in sector 1,Electricity,High
+824,street light not working in sector 3,Electricity,High
+825,low pressure in sector 3,Water,Medium
+826,garbage not collected in sector 2,Garbage,High
+827,potholes in sector 5,Road,Medium
+828,low pressure in bus stand,Water,Medium
+829,garbage not collected in sector 1,Garbage,High
+830,dirty water in market area,Water,High
+831,bad smell in market area,Garbage,Medium
+832,garbage not collected in sector 5,Garbage,High
+833,no water supply in sector 1,Water,High
+834,bad smell in sector 5,Garbage,Medium
+835,no water supply in market area,Water,High
+836,voltage fluctuation in market area,Electricity,Medium
+837,dirty water in market area,Water,Low
+838,low pressure in sector 2,Water,Medium
+839,construction issue in sector 3,Road,High
+840,voltage fluctuation in sector 1,Electricity,Medium
+841,street light not working in near school,Electricity,High
+842,overflowing bins in sector 5,Garbage,High
+843,no water supply in bus stand,Water,High
+844,construction issue in sector 4,Road,High
+845,dirty water in sector 5,Water,Medium
+846,low pressure in market area,Water,Medium
+847,construction issue in bus stand,Road,Low
+848,overflowing bins in market area,Garbage,High
+849,voltage fluctuation in sector 2,Electricity,Medium
+850,voltage fluctuation in bus stand,Electricity,Medium
+851,dirty water in sector 2,Water,High
+852,waterlogging in sector 5,Road,Medium
+853,voltage fluctuation in sector 4,Electricity,Medium
+854,waterlogging in sector 4,Road,Low
+855,bad smell in sector 1,Garbage,High
+856,bad smell in sector 5,Garbage,Medium
+857,road damaged in sector 2,Road,High
+858,bad smell in sector 3,Garbage,Medium
+859,low pressure in sector 4,Water,Medium
+860,voltage fluctuation in sector 5,Electricity,Medium
+861,construction issue in sector 1,Road,High
+862,low pressure in market area,Water,Medium
+863,irregular cleaning in near school,Garbage,Low
+864,overflowing bins in sector 5,Garbage,High
+865,overflowing bins in sector 4,Garbage,High
+866,street light not working in near school,Electricity,High
+867,irregular cleaning in sector 4,Garbage,Low
+868,irregular cleaning in sector 3,Garbage,Low
+869,voltage fluctuation in sector 3,Electricity,Medium
+870,low pressure in sector 3,Water,Medium
+871,transformer issue in near school,Electricity,Low
+872,potholes in sector 1,Road,Medium
+873,irregular cleaning in sector 2,Garbage,High
+874,potholes in sector 2,Road,Medium
+875,overflowing bins in sector 2,Garbage,High
+876,potholes in sector 3,Road,Low
+877,power outage in sector 4,Electricity,High
+878,water leakage in bus stand,Water,High
+879,low pressure in sector 4,Water,Medium
+880,road damaged in sector 2,Road,Medium
+881,voltage fluctuation in sector 2,Electricity,Medium
+882,power outage in bus stand,Electricity,High
+883,street light not working in sector 2,Electricity,High
+884,irregular cleaning in market area,Garbage,Medium
+885,dirty water in bus stand,Water,High
+886,construction issue in bus stand,Road,Low
+887,construction issue in market area,Road,Medium
+888,street light not working in near school,Electricity,High
+889,overflowing bins in sector 1,Garbage,High
+890,water leakage in near school,Water,Low
+891,street light not working in sector 5,Electricity,High
+892,voltage fluctuation in sector 1,Electricity,Medium
+893,transformer issue in market area,Electricity,Low
+894,water leakage in sector 5,Water,High
+895,road damaged in sector 1,Road,Medium
+896,power outage in bus stand,Electricity,High
+897,bad smell in market area,Garbage,Low
+898,dirty water in sector 1,Water,High
+899,construction issue in bus stand,Road,Medium
+900,bad smell in near school,Garbage,Low
+901,power outage in sector 2,Electricity,High
+902,bad smell in sector 3,Garbage,Medium
+903,street light not working in sector 4,Electricity,High
+904,power outage in sector 2,Electricity,High
+905,waterlogging in sector 3,Road,Medium
+906,construction issue in market area,Road,Low
+907,road damaged in sector 4,Road,Medium
+908,garbage not collected in near school,Garbage,High
+909,voltage fluctuation in sector 2,Electricity,Medium
+910,overflowing bins in sector 3,Garbage,High
+911,bad smell in near school,Garbage,Low
+912,construction issue in sector 3,Road,Low
+913,bad smell in bus stand,Garbage,Medium
+914,construction issue in market area,Road,Low
+915,construction issue in market area,Road,Low
+916,garbage not collected in sector 5,Garbage,High
+917,garbage not collected in sector 5,Garbage,High
+918,construction issue in sector 4,Road,Medium
+919,voltage fluctuation in near school,Electricity,Medium
+920,waterlogging in sector 2,Road,Medium
+921,potholes in near school,Road,Medium
+922,construction issue in market area,Road,Medium
+923,irregular cleaning in market area,Garbage,Medium
+924,street light not working in sector 1,Electricity,High
+925,irregular cleaning in sector 3,Garbage,Low
+926,bad smell in sector 1,Garbage,High
+927,low pressure in near school,Water,Medium
+928,irregular cleaning in market area,Garbage,Medium
+929,power outage in sector 5,Electricity,High
+930,irregular cleaning in bus stand,Garbage,Low
+931,road damaged in sector 5,Road,High
+932,voltage fluctuation in sector 3,Electricity,Medium
+933,street light not working in sector 4,Electricity,High
+934,voltage fluctuation in near school,Electricity,Medium
+935,construction issue in sector 3,Road,Medium
+936,irregular cleaning in sector 2,Garbage,Medium
+937,bad smell in bus stand,Garbage,High
+938,water leakage in sector 3,Water,Medium
+939,dirty water in sector 4,Water,Low
+940,dirty water in bus stand,Water,Medium
+941,water leakage in sector 2,Water,Medium
+942,irregular cleaning in sector 1,Garbage,Low
+943,power outage in near school,Electricity,High
+944,bad smell in sector 3,Garbage,Medium
+945,street light not working in market area,Electricity,High
+946,dirty water in sector 2,Water,High
+947,street light not working in sector 3,Electricity,High
+948,no water supply in sector 3,Water,High
+949,overflowing bins in sector 1,Garbage,High
+950,road damaged in near school,Road,Medium
+951,street light not working in market area,Electricity,High
+952,voltage fluctuation in sector 3,Electricity,Medium
+953,voltage fluctuation in sector 2,Electricity,Medium
+954,street light not working in sector 2,Electricity,High
+955,no water supply in sector 4,Water,High
+956,street light not working in bus stand,Electricity,High
+957,garbage not collected in sector 3,Garbage,High
+958,no water supply in bus stand,Water,High
+959,street light not working in market area,Electricity,High
+960,potholes in sector 3,Road,Low
+961,water leakage in bus stand,Water,Medium
+962,transformer issue in sector 3,Electricity,High
+963,transformer issue in bus stand,Electricity,Medium
+964,no water supply in bus stand,Water,High
+965,waterlogging in sector 5,Road,Medium
+966,transformer issue in sector 1,Electricity,High
+967,potholes in sector 2,Road,Medium
+968,waterlogging in sector 1,Road,Low
+969,transformer issue in sector 3,Electricity,Low
+970,waterlogging in sector 4,Road,Low
+971,low pressure in near school,Water,Medium
+972,overflowing bins in sector 2,Garbage,High
+973,water leakage in bus stand,Water,High
+974,waterlogging in sector 5,Road,Medium
+975,transformer issue in sector 4,Electricity,Low
+976,overflowing bins in near school,Garbage,High
+977,potholes in near school,Road,Low
+978,water leakage in sector 4,Water,Medium
+979,transformer issue in sector 2,Electricity,Medium
+980,bad smell in market area,Garbage,High
+981,voltage fluctuation in bus stand,Electricity,Medium
+982,irregular cleaning in bus stand,Garbage,Medium
+983,waterlogging in market area,Road,Medium
+984,no water supply in sector 5,Water,High
+985,garbage not collected in near school,Garbage,High
+986,transformer issue in sector 2,Electricity,Medium
+987,voltage fluctuation in sector 4,Electricity,Medium
+988,irregular cleaning in sector 4,Garbage,High
+989,irregular cleaning in sector 3,Garbage,High
+990,transformer issue in near school,Electricity,Low
+991,irregular cleaning in sector 4,Garbage,Medium
+992,overflowing bins in sector 2,Garbage,High
+993,power outage in sector 4,Electricity,High
+994,bad smell in bus stand,Garbage,High
+995,dirty water in market area,Water,Low
+996,voltage fluctuation in sector 1,Electricity,Medium
+997,water leakage in market area,Water,Medium
+998,bad smell in market area,Garbage,Low
+999,road damaged in sector 1,Road,Medium
+1000,low pressure in sector 5,Water,Medium
+1001,irregular cleaning in sector 3,Garbage,Low
+1002,water leakage in sector 4,Water,High
+1003,garbage not collected in bus stand,Garbage,High
+1004,irregular cleaning in sector 4,Garbage,Medium
+1005,voltage fluctuation in market area,Electricity,Medium
+1006,dirty water in sector 1,Water,High
+1007,potholes in market area,Road,High
+1008,bad smell in market area,Garbage,Medium
+1009,voltage fluctuation in near school,Electricity,Medium
+1010,overflowing bins in sector 3,Garbage,High
+1011,garbage not collected in sector 3,Garbage,High
+1012,transformer issue in near school,Electricity,Medium
+1013,overflowing bins in sector 4,Garbage,High
+1014,overflowing bins in sector 4,Garbage,High
+1015,no water supply in bus stand,Water,High
+1016,power outage in sector 3,Electricity,High
+1017,transformer issue in market area,Electricity,High
+1018,irregular cleaning in near school,Garbage,High
+1019,no water supply in sector 3,Water,High
+1020,potholes in sector 1,Road,High
+1021,construction issue in sector 2,Road,High
+1022,low pressure in bus stand,Water,Medium
+1023,garbage not collected in sector 2,Garbage,High
+1024,street light not working in sector 3,Electricity,High
+1025,dirty water in near school,Water,Medium
+1026,overflowing bins in sector 5,Garbage,High
+1027,irregular cleaning in sector 3,Garbage,Low
+1028,construction issue in sector 1,Road,High
+1029,garbage not collected in sector 4,Garbage,High
+1030,transformer issue in sector 3,Electricity,Low
+1031,no water supply in near school,Water,High
+1032,overflowing bins in sector 5,Garbage,High
+1033,transformer issue in sector 3,Electricity,High
+1034,potholes in market area,Road,Low
+1035,waterlogging in sector 4,Road,Low
+1036,water leakage in near school,Water,Medium
+1037,no water supply in sector 1,Water,High
+1038,irregular cleaning in bus stand,Garbage,Medium
+1039,low pressure in sector 2,Water,Medium
+1040,low pressure in sector 1,Water,Medium
+1041,power outage in sector 4,Electricity,High
+1042,overflowing bins in sector 3,Garbage,High
+1043,low pressure in sector 4,Water,Medium
+1044,bad smell in sector 4,Garbage,High
+1045,water leakage in near school,Water,Medium
+1046,dirty water in sector 4,Water,Low
+1047,water leakage in bus stand,Water,High
+1048,garbage not collected in sector 2,Garbage,High
+1049,no water supply in sector 3,Water,High
+1050,potholes in market area,Road,Low
+1051,transformer issue in market area,Electricity,High
+1052,street light not working in sector 1,Electricity,High
+1053,power outage in market area,Electricity,High
+1054,transformer issue in market area,Electricity,High
+1055,garbage not collected in sector 4,Garbage,High
+1056,no water supply in sector 4,Water,High
+1057,no water supply in sector 5,Water,High
+1058,low pressure in bus stand,Water,Medium
+1059,transformer issue in sector 3,Electricity,High
+1060,no water supply in sector 4,Water,High
+1061,garbage not collected in sector 2,Garbage,High
+1062,irregular cleaning in market area,Garbage,High
+1063,overflowing bins in near school,Garbage,High
+1064,overflowing bins in market area,Garbage,High
+1065,road damaged in market area,Road,Medium
+1066,transformer issue in sector 5,Electricity,Medium
+1067,potholes in market area,Road,High
+1068,dirty water in near school,Water,Medium
+1069,water leakage in market area,Water,High
+1070,power outage in sector 4,Electricity,High
+1071,transformer issue in sector 2,Electricity,Low
+1072,voltage fluctuation in sector 3,Electricity,Medium
+1073,overflowing bins in sector 3,Garbage,High
+1074,irregular cleaning in near school,Garbage,Low
+1075,street light not working in sector 4,Electricity,High
+1076,no water supply in sector 2,Water,High
+1077,overflowing bins in sector 4,Garbage,High
+1078,voltage fluctuation in market area,Electricity,Medium
+1079,power outage in sector 3,Electricity,High
+1080,voltage fluctuation in sector 4,Electricity,Medium
+1081,water leakage in sector 4,Water,High
+1082,voltage fluctuation in sector 5,Electricity,Medium
+1083,low pressure in sector 3,Water,Medium
+1084,potholes in sector 4,Road,Medium
+1085,water leakage in sector 5,Water,Medium
+1086,garbage not collected in sector 3,Garbage,High
+1087,street light not working in market area,Electricity,High
+1088,waterlogging in sector 5,Road,Low
+1089,bad smell in market area,Garbage,High
+1090,irregular cleaning in market area,Garbage,High
+1091,no water supply in sector 4,Water,High
+1092,voltage fluctuation in bus stand,Electricity,Medium
+1093,power outage in sector 5,Electricity,High
+1094,transformer issue in sector 3,Electricity,High
+1095,irregular cleaning in bus stand,Garbage,Low
+1096,low pressure in sector 2,Water,Medium
+1097,no water supply in sector 2,Water,High
+1098,potholes in sector 3,Road,Low
+1099,low pressure in sector 3,Water,Medium
+1100,no water supply in sector 5,Water,High
+1101,potholes in sector 4,Road,Low
+1102,garbage not collected in sector 1,Garbage,High
+1103,dirty water in sector 5,Water,Low
+1104,construction issue in sector 1,Road,High
+1105,dirty water in market area,Water,Medium
+1106,potholes in sector 5,Road,Medium
+1107,street light not working in bus stand,Electricity,High
+1108,transformer issue in sector 3,Electricity,High
+1109,bad smell in sector 1,Garbage,Low
+1110,irregular cleaning in sector 3,Garbage,Low
+1111,dirty water in sector 3,Water,Low
+1112,overflowing bins in sector 4,Garbage,High
+1113,irregular cleaning in sector 3,Garbage,Low
+1114,dirty water in sector 1,Water,Medium
+1115,voltage fluctuation in sector 1,Electricity,Medium
+1116,irregular cleaning in sector 5,Garbage,Medium
+1117,construction issue in bus stand,Road,High
+1118,waterlogging in sector 4,Road,Low
+1119,overflowing bins in sector 1,Garbage,High
+1120,street light not working in sector 4,Electricity,High
+1121,overflowing bins in sector 1,Garbage,High
+1122,bad smell in near school,Garbage,Low
+1123,garbage not collected in bus stand,Garbage,High
+1124,waterlogging in sector 4,Road,High
+1125,road damaged in sector 1,Road,Medium
+1126,no water supply in sector 4,Water,High
+1127,overflowing bins in sector 2,Garbage,High
+1128,dirty water in sector 4,Water,High
+1129,no water supply in market area,Water,High
+1130,low pressure in sector 3,Water,Medium
+1131,street light not working in sector 5,Electricity,High
+1132,overflowing bins in sector 3,Garbage,High
+1133,overflowing bins in sector 1,Garbage,High
+1134,road damaged in sector 5,Road,Low
+1135,road damaged in sector 2,Road,Low
+1136,power outage in near school,Electricity,High
+1137,waterlogging in market area,Road,Medium
+1138,low pressure in sector 1,Water,Medium
+1139,low pressure in sector 1,Water,Medium
+1140,irregular cleaning in market area,Garbage,Low
+1141,potholes in sector 1,Road,Low
+1142,potholes in near school,Road,High
+1143,overflowing bins in bus stand,Garbage,High
+1144,voltage fluctuation in market area,Electricity,Medium
+1145,voltage fluctuation in sector 1,Electricity,Medium
+1146,voltage fluctuation in sector 4,Electricity,Medium
+1147,garbage not collected in sector 2,Garbage,High
+1148,potholes in market area,Road,High
+1149,street light not working in sector 5,Electricity,High
+1150,construction issue in near school,Road,Medium
+1151,power outage in sector 3,Electricity,High
+1152,voltage fluctuation in sector 5,Electricity,Medium
+1153,low pressure in sector 5,Water,Medium
+1154,waterlogging in sector 4,Road,Low
+1155,road damaged in near school,Road,Medium
+1156,waterlogging in sector 1,Road,High
+1157,dirty water in sector 1,Water,Medium
+1158,street light not working in bus stand,Electricity,High
+1159,transformer issue in bus stand,Electricity,High
+1160,waterlogging in sector 2,Road,Medium
+1161,no water supply in sector 2,Water,High
+1162,voltage fluctuation in sector 1,Electricity,Medium
+1163,construction issue in sector 3,Road,High
+1164,potholes in bus stand,Road,Low
+1165,dirty water in market area,Water,Medium
+1166,street light not working in sector 5,Electricity,High
+1167,road damaged in market area,Road,High
+1168,potholes in sector 3,Road,Low
+1169,irregular cleaning in sector 4,Garbage,High
+1170,power outage in sector 3,Electricity,High
+1171,bad smell in market area,Garbage,Medium
+1172,bad smell in market area,Garbage,Low
+1173,voltage fluctuation in sector 1,Electricity,Medium
+1174,bad smell in sector 4,Garbage,Medium
+1175,irregular cleaning in sector 1,Garbage,Low
+1176,potholes in bus stand,Road,High
+1177,potholes in sector 4,Road,Low
+1178,garbage not collected in sector 1,Garbage,High
+1179,road damaged in sector 2,Road,Medium
+1180,potholes in sector 1,Road,Medium
+1181,overflowing bins in bus stand,Garbage,High
+1182,construction issue in sector 3,Road,Low
+1183,road damaged in sector 3,Road,Medium
+1184,dirty water in sector 2,Water,Medium
+1185,road damaged in bus stand,Road,Medium
+1186,dirty water in sector 2,Water,Medium
+1187,water leakage in sector 1,Water,High
+1188,bad smell in sector 2,Garbage,Low
+1189,power outage in near school,Electricity,High
+1190,overflowing bins in market area,Garbage,High
+1191,voltage fluctuation in sector 4,Electricity,Medium
+1192,construction issue in near school,Road,High
+1193,dirty water in sector 4,Water,Low
+1194,overflowing bins in market area,Garbage,High
+1195,bad smell in sector 4,Garbage,Low
+1196,no water supply in sector 3,Water,High
+1197,power outage in sector 3,Electricity,High
+1198,power outage in bus stand,Electricity,High
+1199,road damaged in bus stand,Road,Medium
+1200,voltage fluctuation in near school,Electricity,Medium

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Helpline = () => {
     const Card = ({ title, number, icon }) => (
@@ -14,9 +15,12 @@ const Helpline = () => {
                     <p className="text-2xl font-black text-[#1f39ad]">{number}</p>
                 </div>
             </div>
-            <button className="bg-[#1f39ad] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-800 flex items-center gap-2">
+            <a
+                href={`tel:${number.replace(/[^0-9+]/g, "")}`}
+                className="bg-[#1f39ad] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-800 flex items-center gap-2 no-underline"
+            >
                 <span className="material-symbols-outlined text-sm">call</span> Call Now
-            </button>
+            </a>
         </div>
     );
 
@@ -31,7 +35,7 @@ const Helpline = () => {
             <div className="grid gap-4">{children}</div>
         </div>
     );
-
+    const navigate = useNavigate();
     return (
         <div className="min-h-screen w-full bg-white">
             {/* Navbar */}
@@ -41,11 +45,11 @@ const Helpline = () => {
                 </div>
                 <div className=" md:flex gap-8 text-sm font-medium">
                     <a href="#" className="text-slate-600 hover:text-[#1f39ad]" onClick={(e) => { e.preventDefault(); navigate('/'); }} >Home</a>
-                    <a href="#" className="text-slate-600 hover:text-[#1f39ad]" onClick={(e) => { e.preventDefault(); navigate('/track-complaint'); }} >Track Complaint</a>
+                    <a href="#" className="text-slate-600 hover:text-[#1f39ad]" onClick={(e) => { e.preventDefault(); navigate('/track/:id'); }} >Track Complaint</a>
                     <a href="#" className="text-[#1f39ad] border-b-2 border-[#1f39ad]">Helpline Info</a>
-                    <a href="#" className="text-slate-600 hover:text-[#1f39ad]" onClick={(e) => { e.preventDefault(); navigate('/contact-us'); }} >Contact Us</a>
+                    <a href="#" className="text-slate-600 hover:text-[#1f39ad]" onClick={(e) => { e.preventDefault(); navigate('/contact'); }} >Contact Us</a>
                 </div>
-                <button className="bg-[#1f39ad] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-800">
+                <button className="bg-[#1f39ad] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-800" onClick={(e) => { e.preventDefault(); navigate('/login'); }}>
                     Login
                 </button>
             </nav>

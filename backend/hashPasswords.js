@@ -4,31 +4,51 @@ require("dotenv").config();
 
 const User = require("./models/User");
 
-async function hashExistingPasswords() {
-    try {
-        await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/complainsetu");
+const BCRYPT_ROUNDS = 12; // Increased from 10 for better resistance
 
-        const users = await User.find({});
+function isHashed(password) {
+    // Robust check: bcryptjs hashes start with $2a$ or $2b$
+    return /^\$2[ab]\$\d{2}\$/.test(password);
+}
+
+async function hashExistingPasswords() {
+    if (!process.env.MONGO_URI) {
+        console.error("❌ MONGO_URI is not set.");
+        process.exit(1);
+    }
+
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("✅ Connected to MongoDB");
+
+        const users = await User.find({}).select("+password"); // ensure password field is fetched
 
         for (const user of users) {
-            if (user.password && !user.password.startsWith("$2")) {
-                // Password is not hashed
-                console.log(`Hashing password for user: ${user.email}`);
-                const salt = await bcrypt.genSalt(10);
-                const hashedPassword = await bcrypt.hash(user.password, salt);
-                console.log(`Password hashed for user: ${user.email}`);
-                // Use updateOne to avoid triggering pre-save hook
-                await User.updateOne({ _id: user._id }, { password: hashedPassword });
-            } else {
-                console.log(`Password already hashed for user: ${user.email}`);
+            if (!user.password) {
+                console.warn(`⚠️  No password found for user: ${user.email}, skipping.`);
+                continue;
             }
+
+            if (isHashed(user.password)) {
+                console.log(`✅ Already hashed: ${user.email}`);
+                continue;
+            }
+
+            console.log(`🔒 Hashing password for: ${user.email}`);
+            const hashedPassword = await bcrypt.hash(user.password, BCRYPT_ROUNDS);
+
+            // Bypass pre-save hook to avoid double-hashing
+            await User.updateOne({ _id: user._id }, { $set: { password: hashedPassword } });
+            console.log(`✅ Hashed: ${user.email}`);
         }
 
-        console.log("All passwords checked and hashed if necessary.");
+        console.log("✅ All passwords checked and hashed if necessary.");
         process.exit(0);
     } catch (error) {
-        console.error("Error:", error);
+        console.error("❌ Error:", error.message);
         process.exit(1);
+    } finally {
+        await mongoose.disconnect();
     }
 }
 
