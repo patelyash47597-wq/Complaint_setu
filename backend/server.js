@@ -67,8 +67,18 @@ if (!MONGO_URI) {
 }
 
 console.log("🔗 Connecting to MongoDB using environment variable...");
+const startServer = () => {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`✅ Server running on port ${PORT}`);
+    });
+};
+
 mongoose.connect(MONGO_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
+    .then(() => {
+        console.log("✅ MongoDB Connected");
+        startServer();
+    })
     .catch(err => {
         console.error("❌ MongoDB connection error:", err.message);
         process.exit(1);
@@ -87,9 +97,4 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     console.error("Unhandled error:", err.message);
     res.status(500).json({ error: "Internal server error" });
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`✅ Server running on port ${PORT}`);
 });
