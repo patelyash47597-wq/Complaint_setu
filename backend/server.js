@@ -60,12 +60,14 @@ const path = require("path");
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // --- DB Connection ---
-if (!process.env.MONGO_URI) {
-    console.error("❌ MONGO_URI is not set in environment variables.");
+const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI || process.env.DATABASE_URL;
+if (!MONGO_URI) {
+    console.error("❌ MongoDB URI is not set. Set MONGO_URI, MONGODB_URI, or DATABASE_URL in environment variables.");
     process.exit(1);
 }
 
-mongoose.connect(process.env.MONGO_URI)
+console.log("🔗 Connecting to MongoDB using environment variable...");
+mongoose.connect(MONGO_URI)
     .then(() => console.log("✅ MongoDB Connected"))
     .catch(err => {
         console.error("❌ MongoDB connection error:", err.message);
