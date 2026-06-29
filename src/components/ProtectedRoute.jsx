@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { apiUrl } from "../utils/api";
 
 const ProtectedRoute = ({ children, adminOnly = false }) => {
     const { isAuthenticated, user, loading, login } = useAuth();
@@ -29,7 +30,7 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
         setAdminLoginLoading(true);
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/login", {
+            const res = await fetch(apiUrl("/api/auth/login"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: adminEmail, password: adminPassword })

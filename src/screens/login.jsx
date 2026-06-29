@@ -1,6 +1,7 @@
 ﻿import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { apiUrl } from "../utils/api";
 
 // ─── Icons (inline SVG to avoid dependency) ─────────────────────────────────
 const Icon = ({ d, size = 18 }) => (
@@ -115,7 +116,7 @@ const AuthPage = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:5000/api/auth/forgot-password`, {
+            const res = await fetch(apiUrl("/api/auth/forgot-password"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: resetData.email })
@@ -156,7 +157,7 @@ const AuthPage = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:5000/api/auth/reset-password`, {
+            const res = await fetch(apiUrl("/api/auth/reset-password"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -194,7 +195,7 @@ const AuthPage = () => {
             const payload = isLogin
                 ? { email: formData.email, password: formData.password }
                 : { name: formData.name, email: formData.email, phone: formData.phone, password: formData.password };
-            const res = await fetch(`http://localhost:5000${endpoint}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+            const res = await fetch(apiUrl(endpoint), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
             const data = await res.json();
             if (!res.ok) return setMessage({ type: "error", text: data.message || "Something went wrong." });
             if (isLogin) {

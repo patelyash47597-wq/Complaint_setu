@@ -99,21 +99,47 @@ router.post("/:id/upvote", auth, async (req, res) => {
 });
 
 // ── POST / — Create complaint ─────────────────────────────────────────────────
+// complaintRoutes.js — router.post("/") ke andar pura ye block likho
+
 router.post("/", auth, upload.single("file"), async (req, res) => {
     try {
         const { category, location, details, lat, lng } = req.body;
 
+        // ✅ PEHLE declare karo — bahar try ke
         let priority = "Low";
+        let confidence = null;
+        let imageSeverity = null;
+
+        // ── ML call ────────────────────────────────────────────────────────
         try {
-            const mlRes = await axios.post("http://127.0.0.1:8000/predict", {
-                text: details
-            }, { timeout: 5000 });
-            const mlPriority = mlRes.data?.priority;
-            if (mlPriority) priority = mlPriority;
-        } catch (err) {
-            console.error("ML failed, using default priority. Reason:", err.message);
+            const mlForm = new FormData();
+            mlForm.append("text", details || "");
+            mlForm.append("category", category || "");
+            mlForm.append("location", location || "");
+
+            if (req.file) {
+                mlForm.append("file",
+                    fs.createReadStream(req.file.path),
+                    { filename: req.file.filename, contentType: req.file.mimetype }
+                );
+            }
+
+            const mlRes = await axios.post(
+                "http://127.0.0.1:8000/predict",
+                mlForm,
+                { headers: mlForm.getHeaders(), timeout: 15000 }
+            );
+
+            priority = mlRes.data?.priority || "Low";
+            confidence = mlRes.data?.confidence || null;
+            imageSeverity = mlRes.data?.image_severity || null;
+
+        } catch (mlErr) {
+            console.error("ML failed, using default priority. Reason:", mlErr.message);
+            // confidence aur imageSeverity null rahenge — that's fine
         }
 
+        // ── Save complaint ─────────────────────────────────────────────────
         const image = req.file ? req.file.filename : null;
 
         const complaint = new Complaint({
@@ -122,38 +148,29 @@ router.post("/", auth, upload.single("file"), async (req, res) => {
             details,
             image,
             priority,
+            confidence,       // ✅ ab defined hai
+            imageSeverity,    // ✅ ab defined hai
             userId: req.user?._id,
+            reporterEmail: req.user?.email || null,
             coordinates: {
                 lat: lat ? parseFloat(lat) : null,
-                lng: lng ? parseFloat(lng) : null
-            }
+                lng: lng ? parseFloat(lng) : null,
+            },
         });
 
-        // ── Set SLA deadline based on ML priority ─────────────────────────────
         complaint.setSLA();
-
         await complaint.save();
 
+        // ── Email ──────────────────────────────────────────────────────────
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.DEPARTMENT_EMAIL,
-            subject: `New Complaint Registered — ${priority} Priority`,
-            text: `
-Complaint Details
-Category: ${category}
-Location: ${location}
-Details: ${details}
-Priority: ${priority}
-SLA Deadline: ${complaint.slaDeadline?.toISOString()}
-Complaint ID: ${complaint._id}
-            `,
+            subject: `New Complaint — ${priority} Priority`,
+            text: `Category: ${category}\nLocation: ${location}\nDetails: ${details}\nPriority: ${priority}\nComplaint ID: ${complaint._id}`,
         };
 
         if (req.file) {
-            mailOptions.attachments = [{
-                filename: req.file.filename,
-                path: req.file.path,
-            }];
+            mailOptions.attachments = [{ filename: req.file.filename, path: req.file.path }];
         }
 
         await transporter.sendMail(mailOptions);
@@ -162,8 +179,10 @@ Complaint ID: ${complaint._id}
             message: "Complaint submitted and email sent",
             complaintId: complaint._id,
             priority,
+            confidence,
+            imageSeverity,
             slaDeadline: complaint.slaDeadline,
-            slaTotalHours: SLA_HOURS[priority]
+            slaTotalHours: SLA_HOURS[priority],
         });
 
     } catch (error) {
@@ -203,7 +222,7 @@ router.get("/", async (req, res) => {
 // ⚠️ MUST be before /:id route
 router.get("/user/my-complaints", auth, async (req, res) => {
     try {
-        const complaints = await Complaint.find({ userId: req.user.id })
+        const complaints = await Complaint.find({ userId: req.user.id || req.user._id })
             .sort({ createdAt: -1 });
 
         const enriched = complaints.map(c => ({
@@ -328,7 +347,7 @@ router.patch("/:id", async (req, res) => {
 
         const User = require("../models/User");
         const user = await User.findById(complaint.userId).catch(() => null);
-        const citizenEmail = user?.email;
+        const citizenEmail = user?.email || complaint.reporterEmail;
 
         if (citizenEmail) {
             await transporter.sendMail({
@@ -416,9 +435,9 @@ router.put("/:id", async (req, res) => {
         });
 
         console.log("User found    :", !!user);
-        console.log("Citizen email :", user?.email);      // ← if undefined, check User model
+        console.log("Citizen email :", user?.email || updated.reporterEmail);
 
-        const citizenEmail = user?.email;
+        const citizenEmail = user?.email || updated.reporterEmail;
 
         if (!citizenEmail) {
             console.log("⚠️  No citizen email — skipping email send");

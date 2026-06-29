@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { apiUrl } from "../utils/api";
 
 const statusColors = {
     "Pending": { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", dot: "bg-amber-400", icon: "schedule" },
@@ -35,7 +36,7 @@ export default function MyComplaints() {
         setError(null);
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/complaints/user/my-complaints", {
+            const res = await fetch(apiUrl("/api/complaints/user/my-complaints"), {
                 headers: { Authorization: `Bearer ${token}` }
             });
             if (!res.ok) throw new Error("Failed to fetch complaints");
@@ -130,8 +131,8 @@ export default function MyComplaints() {
                             key={f}
                             onClick={() => setFilter(f)}
                             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all border ${filter === f
-                                    ? "bg-blue-600 text-white border-blue-600"
-                                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-50"
+                                ? "bg-blue-600 text-white border-blue-600"
+                                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:bg-slate-50"
                                 }`}
                         >
                             {f} {counts[f] > 0 && <span className="ml-1 opacity-70">({counts[f]})</span>}

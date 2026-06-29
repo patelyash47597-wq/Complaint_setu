@@ -14,14 +14,18 @@ app.use(helmet({
 
 // --- CORS: restrict to your frontend origin ---
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(",")
+    ? process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim()).filter(Boolean)
     : [];
+const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.trim() : null;
+if (frontendUrl && !allowedOrigins.includes(frontendUrl)) {
+    allowedOrigins.push(frontendUrl);
+}
 
 app.use(cors({
     origin: (origin, callback) => {
         // Allow server-to-server or same-origin requests (no Origin header)
         if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) return callback(null, true);
+        if (!allowedOrigins.length || allowedOrigins.includes(origin)) return callback(null, true);
         callback(new Error("Not allowed by CORS"));
     },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],

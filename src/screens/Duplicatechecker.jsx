@@ -21,6 +21,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../utils/api";
 
 // ── Similarity badge ──────────────────────────────────────────────────────────
 const SimilarityBadge = ({ score, level }) => {
@@ -129,7 +130,7 @@ export default function DuplicateChecker({ details, category, location, onUpvote
         setDismissed(false);
 
         try {
-            const res = await fetch("http://localhost:5000/api/complaints/check-duplicate", {
+            const res = await fetch(apiUrl("/api/complaints/check-duplicate"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ details: d, category: cat, location: loc }),
@@ -161,7 +162,7 @@ export default function DuplicateChecker({ details, category, location, onUpvote
     const handleUpvote = async (id) => {
         setUpvoting(id);
         try {
-            const res = await fetch(`http://localhost:5000/api/complaints/${id}/upvote`, {
+            const res = await fetch(apiUrl(`/api/complaints/${id}/upvote`), {
                 method: "PATCH"
             });
             const data = await res.json();

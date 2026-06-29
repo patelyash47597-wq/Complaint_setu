@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { apiUrl } from "../utils/api";
 
 const TrackComplaint = ({ onNavigate = () => { } }) => {
     const { id: urlId } = useParams();
@@ -12,14 +13,35 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
     const [feedbackRating, setFeedbackRating] = useState(0);
     const [feedbackText, setFeedbackText] = useState("");
     const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+    const [userComplaints, setUserComplaints] = useState([]);
+    const [userComplaintsLoading, setUserComplaintsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        fetchUserComplaints();
         if (urlId && urlId !== ":id") {
             setSearchId(urlId);
             fetchComplaint(urlId);
         }
     }, [urlId]);
+
+    const fetchUserComplaints = async () => {
+        setUserComplaintsLoading(true);
+        try {
+            const token = localStorage.getItem("token");
+            const res = await fetch(apiUrl("/api/complaints/user/my-complaints"), {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error("Failed to load your complaints");
+            const data = await res.json();
+            setUserComplaints(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.error("Error fetching user complaints:", error);
+            setUserComplaints([]);
+        } finally {
+            setUserComplaintsLoading(false);
+        }
+    };
 
     const fetchComplaint = async (id) => {
         setLoading(true);
@@ -30,7 +52,7 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
         setFeedbackSubmitted(false);
 
         try {
-            const res = await fetch(`http://localhost:5000/api/complaints/${id}`);
+            const res = await fetch(apiUrl(`/api/complaints/${id}`));
             if (!res.ok) throw new Error("Complaint not found");
             const data = await res.json();
             setComplaint(data);
@@ -46,6 +68,7 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
             setLoading(false);
         }
     };
+
 
     const validateLocation = async (location) => {
         if (!location) return;
@@ -83,7 +106,7 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
             return;
         }
         try {
-            await fetch(`http://localhost:5000/api/complaints/${complaint._id}/feedback`, {
+            await fetch(apiUrl(`/api/complaints/${complaint._id}/feedback`), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ rating: feedbackRating, comment: feedbackText })
@@ -98,7 +121,7 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
     const getImageUrl = (image) => {
         if (!image) return null;
         const filename = image.replace(/\\/g, '/').replace(/^uploads\//, '');
-        return `http://localhost:5000/uploads/${filename}`;
+        return apiUrl(`/uploads/${filename}`);
     };
 
     return (
@@ -491,6 +514,48 @@ const TrackComplaint = ({ onNavigate = () => { } }) => {
                                 </div>
                             </div>
                         )}
+
+                        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[32px] p-8 shadow-lg hover:shadow-xl transition-shadow ml-6">
+                            <div className="flex items-center justify-between mb-6">
+                                <div>
+                                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500 font-bold">My Complaints</p>
+                                    <h2 className="text-xl font-bold text-slate-900 dark:text-white">Your recent complaints</h2>
+                                </div>
+                                <span className="text-sm text-slate-500">Showing latest 5</span>
+                            </div>
+
+                            {userComplaintsLoading ? (
+                                <div className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-8 text-center text-slate-500">
+                                    Loading your complaints...
+                                </div>
+                            ) : userComplaints.length === 0 ? (
+                                <div className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-8 text-center text-slate-500">
+                                    You don't have any complaints yet.
+                                </div>
+                            ) : (
+                                <div className="grid gap-4 md:grid-cols-2">
+                                    {userComplaints.slice(0, 5).map((item) => (
+                                        <div key={item._id} className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-5 hover:border-primary/30 transition">
+                                            <div className="flex items-center justify-between mb-3 gap-3">
+                                                <div>
+                                                    <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{item.category || 'General complaint'}</p>
+                                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">ID: {item._id}</p>
+                                                </div>
+                                                <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${item.status === 'Resolved' ? 'bg-emerald-100 text-emerald-700' : item.status === 'In Progress' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600'}`}>
+                                                    {item.status}
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">{item.details || 'No details available.'}</p>
+                                            <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400">
+                                                <span>{new Date(item.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                                                <span>•</span>
+                                                <span>{item.location || 'Location not set'}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </main>
 

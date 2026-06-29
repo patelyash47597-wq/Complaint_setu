@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { apiUrl } from "../utils/api";
 
 function LocationMarker({ setCoords }) {
     const [position, setPosition] = useState(null);
@@ -90,7 +91,7 @@ const RegisterComplaint = () => {
                 if (category) params.set("category", category);
                 const token = localStorage.getItem("token");
                 const res = await fetch(
-                    `http://localhost:5000/api/complaints/duplicates?${params}`,
+                    apiUrl(`/api/complaints/duplicates?${params}`),
                     { headers: token ? { Authorization: `Bearer ${token}` } : {} }
                 );
                 const data = await res.json();
@@ -113,7 +114,7 @@ const RegisterComplaint = () => {
         try {
             const token = localStorage.getItem("token");
             const res = await fetch(
-                `http://localhost:5000/api/complaints/${complaintId}/upvote`,
+                apiUrl(`/api/complaints/${complaintId}/upvote`),
                 { method: "POST", headers: { Authorization: `Bearer ${token}` } }
             );
             const data = await res.json();
@@ -192,7 +193,7 @@ const RegisterComplaint = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/complaints", {
+            const res = await fetch(apiUrl("/api/complaints"), {
                 method: "POST",
                 headers: token ? { Authorization: `Bearer ${token}` } : {},
                 body: formData

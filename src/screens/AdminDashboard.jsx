@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StatsPage from "./StatsPage";
 import DepartmentsPage from "./DepartmentsPage";
+import { apiUrl } from "../utils/api";
 
 // ── Inline styles & keyframes injected once ──────────────────────────────────
 const GLOBAL_CSS = `
@@ -189,26 +190,26 @@ const SLATimer = ({ complaint }) => {
         );
     }
 
-    const totalSecs   = (complaint.slaTotalHours || 72) * 3600;
-    const deadlineMs  = new Date(complaint.slaDeadline).getTime();
-    const remSecs     = Math.max(0, Math.floor((deadlineMs - Date.now()) / 1000));
+    const totalSecs = (complaint.slaTotalHours || 72) * 3600;
+    const deadlineMs = new Date(complaint.slaDeadline).getTime();
+    const remSecs = Math.max(0, Math.floor((deadlineMs - Date.now()) / 1000));
     const percentLeft = Math.min(100, Math.round((remSecs / totalSecs) * 100));
-    const breached    = remSecs === 0;
-    const urgent      = !breached && percentLeft < 20;
+    const breached = remSecs === 0;
+    const urgent = !breached && percentLeft < 20;
 
     const barColor = breached ? "#ff4d6d"
         : urgent ? "#f97316"
-        : complaint.priority === "High" ? "#ff4d6d"
-        : complaint.priority === "Medium" ? "#f0b429"
-        : "#00c48c";
+            : complaint.priority === "High" ? "#ff4d6d"
+                : complaint.priority === "Medium" ? "#f0b429"
+                    : "#00c48c";
 
     const labelColor = breached ? "#9f1239"
         : urgent ? "#9a3412"
-        : "var(--muted)";
+            : "var(--muted)";
 
     const bgColor = breached ? "#fff0f3"
         : urgent ? "#fff7ed"
-        : "var(--surface)";
+            : "var(--surface)";
 
     return (
         <div style={{
@@ -348,7 +349,7 @@ const DetailModal = ({ item, onClose }) => (
 
                 {item.image && (
                     <img
-                        src={`http://localhost:5000/uploads/${item.image}`}
+                        src={apiUrl(`/uploads/${item.image}`)}
                         alt="complaint"
                         style={{ width: "100%", height: 160, objectFit: "cover", borderRadius: 12, marginTop: 14 }}
                     />
@@ -401,7 +402,7 @@ const AdminDashboard = () => {
         (statusFilter === "" || c.status === statusFilter)
     );
 
-    const totalPages   = Math.max(1, Math.ceil(filteredComplaints.length / itemsPerPage));
+    const totalPages = Math.max(1, Math.ceil(filteredComplaints.length / itemsPerPage));
     const currentItems = filteredComplaints.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     // SLA breach count for admin awareness
@@ -413,10 +414,10 @@ const AdminDashboard = () => {
     ).length;
 
     const counts = {
-        total:      complaints.length,
-        pending:    complaints.filter(c => c.status?.toLowerCase() === "pending").length,
+        total: complaints.length,
+        pending: complaints.filter(c => c.status?.toLowerCase() === "pending").length,
         inProgress: complaints.filter(c => c.status?.toLowerCase() === "in progress").length,
-        resolved:   complaints.filter(c => c.status?.toLowerCase() === "resolved").length,
+        resolved: complaints.filter(c => c.status?.toLowerCase() === "resolved").length,
     };
 
     useEffect(() => {
@@ -424,7 +425,7 @@ const AdminDashboard = () => {
             setLoading(true);
             setError(null);
             try {
-                const res = await fetch("http://localhost:5000/api/complaints");
+                const res = await fetch(apiUrl("/api/complaints"));
                 if (!res.ok) throw new Error(`Server error: ${res.status} ${res.statusText}`);
                 const data = await res.json();
                 setComplaints(Array.isArray(data) ? data : []);
@@ -441,7 +442,7 @@ const AdminDashboard = () => {
     const handleSaveStatus = async (newStatus) => {
         const id = updatingComplaint._id;
         try {
-            const res = await fetch(`http://localhost:5000/api/complaints/${id}`, {
+            const res = await fetch(apiUrl(`/api/complaints/${id}`), {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ status: newStatus }),
@@ -462,7 +463,7 @@ const AdminDashboard = () => {
         { icon: "⚙️", label: "Settings" },
     ];
 
-    if (activeNav === "Stats")       return <StatsPage complaints={complaints} />;
+    if (activeNav === "Stats") return <StatsPage complaints={complaints} />;
     if (activeNav === "Departments") return <DepartmentsPage />;
 
     return (
@@ -515,10 +516,10 @@ const AdminDashboard = () => {
 
                 {/* ── STAT STRIP ── */}
                 <div style={{ padding: "16px 16px 0", display: "flex", gap: 10 }}>
-                    <StatChip label="Total"       count={counts.total}      color="var(--navy)" />
-                    <StatChip label="Pending"     count={counts.pending}    color="#b45309" />
+                    <StatChip label="Total" count={counts.total} color="var(--navy)" />
+                    <StatChip label="Pending" count={counts.pending} color="#b45309" />
                     <StatChip label="In Progress" count={counts.inProgress} color="var(--sky)" />
-                    <StatChip label="Resolved"    count={counts.resolved}   color="var(--mint)" />
+                    <StatChip label="Resolved" count={counts.resolved} color="var(--mint)" />
                 </div>
 
                 {/* ── SECTION TITLE ── */}
@@ -598,8 +599,8 @@ const AdminDashboard = () => {
                                 border: item.slaStatus === "breached"
                                     ? "1.5px solid #fecdd3"
                                     : item.slaStatus === "urgent"
-                                    ? "1.5px solid #fed7aa"
-                                    : "1px solid rgba(226,232,244,0.8)",
+                                        ? "1.5px solid #fed7aa"
+                                        : "1px solid rgba(226,232,244,0.8)",
                                 boxShadow: "0 4px 20px rgba(10,22,40,0.08), 0 1px 3px rgba(10,22,40,0.04)",
                                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                             }}

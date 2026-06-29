@@ -27,6 +27,12 @@ const complaintSchema = new mongoose.Schema({
         ref: "User",
         required: false
     },
+    reporterEmail: {
+        type: String,
+        required: false,
+        trim: true,
+        lowercase: true
+    },
 
     // ── SLA fields ────────────────────────────────────────────────────────────
     slaDeadline: {
@@ -50,6 +56,13 @@ const complaintSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }],
+    // ── Multimodal ML output ──────────────────────────────────────────────────────
+    confidence: {
+        type: Number, min: 0, max: 1, default: null
+    },
+    imageSeverity: {
+        type: Number, min: 0, max: 1, default: null
+    },
 
     feedback: {
         rating: Number,
