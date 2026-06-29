@@ -1,0 +1,10 @@
+backend/
+README.md
+ADMIN_AUTHENTICATION_SUMMARY.md
+ADMIN_SETUP.md
+AUTH_SETUP.md
+FORGOT_PASSWORD_SETUP.md
+postcss.config.js
+backend/**
+**/*.md
+**/tests/**

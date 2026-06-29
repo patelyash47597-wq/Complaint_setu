@@ -66,6 +66,12 @@ if (!MONGO_URI) {
     process.exit(1);
 }
 
+const placeholderPattern = /example\.mongodb\.net|<.*>/i;
+if (placeholderPattern.test(MONGO_URI)) {
+    console.error("❌ MongoDB URI appears to be a placeholder. Replace it with your actual MongoDB connection string in Render environment variables.");
+    process.exit(1);
+}
+
 console.log("🔗 Connecting to MongoDB using environment variable...");
 const startServer = () => {
     const PORT = process.env.PORT || 5000;
