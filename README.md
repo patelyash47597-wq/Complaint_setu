@@ -1,3 +1,10 @@
+<img width="1873" height="892" alt="Screenshot 2026-06-30 132331" src="https://github.com/user-attachments/assets/c5447d32-73e6-4e9e-bacc-8ce77420ef32" />
+<img width="1846" height="892" alt="Screenshot 2026-06-30 132447" src="https://github.com/user-attachments/assets/f0840fe0-43f7-4a46-9871-7a38a1e405a8" />
+<img width="1320" height="893" alt="Screenshot 2026-06-30 132548" src="https://github.com/user-attachments/assets/e6a86c2c-8dfd-4a14-ad74-aff0c56350e7" />
+<img width="1861" height="902" alt="Screenshot 2026-06-30 132651" src="https://github.com/user-attachments/assets/c4119355-b58c-40bb-9e36-5f20fc144c95" />
+<img width="1871" height="896" alt="Screenshot 2026-06-30 132738" src="https://github.com/user-attachments/assets/73d48778-cb24-4012-8bb4-06d254bad59a" />
+<img width="1857" height="901" alt="Screenshot 2026-06-30 132827" src="https://github.com/user-attachments/assets/2b970cf7-036e-440d-b631-ddee4fe36fc6" />
+<img width="758" height="727" alt="Screenshot 2026-06-30 133325" src="https://github.com/user-attachments/assets/2a669cbb-cce4-40f8-86a2-265d0b9780f3" />
 # Complaint Setu
 
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen?style=flat-square)](https://github.com/patelyash47597-wq/Complaint_setu)
